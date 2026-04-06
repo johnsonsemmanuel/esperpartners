@@ -1,13 +1,45 @@
 'use client';
 
 import { useReveal } from './useReveal';
+import { MapPin } from 'lucide-react';
+
+const countries = [
+  { name: 'Ghana', flag: '🇬🇭' },
+  { name: 'Nigeria', flag: '🇳🇬' },
+  { name: 'United Kingdom', flag: '🇬🇧' },
+  { name: 'United States', flag: '🇺🇸' },
+  { name: 'Togo', flag: '🇹🇬' },
+];
 
 const benefits = [
-  { num: '10×', title: 'Faster Time to Market', desc: 'Our proven sprint framework takes products from wireframe to launch in weeks, not months. Ready to ship means ready to grow.', accent: true, wide: true },
-  { num: '98%', title: 'Client Retention', desc: 'We become your long-term engineering partner, not just a vendor. Our clients stay because the results speak for themselves.' },
-  { num: '28+', title: 'Countries Served', desc: 'From Accra to Amsterdam, Singapore to São Paulo — we build software that works globally from Day 1.' },
-  { num: '340+', title: 'Products Shipped', desc: 'From MVPs to million-user platforms — each one delivered with the same obsessive attention to quality.' },
-  { num: '0', title: 'Missed Deadlines', desc: 'We set realistic timelines and we hit them. Project management is not an afterthought — it\'s built into our DNA.' },
+  {
+    num: '5',
+    title: 'Countries We Operate In',
+    desc: 'We serve clients across Ghana, Nigeria, the UK, the USA, and Togo — building software that works across time zones, regulations, and markets.',
+    accent: true,
+    wide: true,
+    countries: true,
+  },
+  {
+    num: '48h',
+    title: 'Average Response Time',
+    desc: 'From first message to a detailed proposal in your inbox. We move fast so your project does too.',
+  },
+  {
+    num: '100%',
+    title: 'Source Code Ownership',
+    desc: 'Everything we build belongs to you. Full IP transfer, no lock-in, no strings attached.',
+  },
+  {
+    num: '6mo',
+    title: 'Post-Launch Support',
+    desc: 'Every project includes 6 months of support — bug fixes, monitoring, and minor updates included.',
+  },
+  {
+    num: '0',
+    title: 'Missed Deadlines',
+    desc: 'We set realistic timelines and we hit them. Scope changes are managed transparently, never used as an excuse.',
+  },
 ];
 
 export default function Stats() {
@@ -16,7 +48,9 @@ export default function Stats() {
   return (
     <section ref={ref} style={{ padding: '100px 40px', background: 'var(--bg2)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
-        <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Why Esper Partners</div></div>
+        <div className="reveal">
+          <div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Why Esper Partners</div>
+        </div>
         <div className="reveal d1">
           <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-4" style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)' }}>
             Built to Help You <span style={{ color: 'var(--orange)' }}>Grow</span>
@@ -44,10 +78,20 @@ export default function Stats() {
                 style={{ fontSize: b.wide ? 26 : 20, color: b.accent ? '#fff' : 'var(--text)' }}>
                 {b.title}
               </div>
-              <div className="text-[14px] font-light leading-[1.65]"
-                style={{ color: b.accent ? 'rgba(255,255,255,0.7)' : 'var(--text-2)' }}>
+              <div className="text-[14px] font-light leading-[1.65] mb-4"
+                style={{ color: b.accent ? 'rgba(255,255,255,0.75)' : 'var(--text-2)' }}>
                 {b.desc}
               </div>
+              {b.countries && (
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {countries.map((c) => (
+                    <div key={c.name} className="flex items-center gap-2 px-3 py-[6px] rounded-full text-[13px] font-medium"
+                      style={{ background: 'rgba(255,255,255,0.15)', color: '#fff' }}>
+                      <span>{c.flag}</span> {c.name}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -7,8 +7,8 @@ import Image from 'next/image';
 const navLinks = [
   { label: 'Services', href: '#features' },
   { label: 'Process', href: '#steps' },
+  { label: 'Pricing', href: '#pricing' },
   { label: 'Work', href: '#work' },
-  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Navbar() {

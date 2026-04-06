@@ -20,20 +20,13 @@ export default function Hero() {
       <div className="hero-bg" />
       <div className="hero-grid" />
 
-      {/* Badge */}
-      <div className="hero-fade-1 inline-flex items-center gap-2 px-4 py-[6px] border rounded-full text-[12px] text-[var(--text-2)] uppercase tracking-[.08em] mb-7"
-        style={{ borderColor: 'var(--border-hover)' }}>
-        <span className="w-[6px] h-[6px] rounded-full bg-[var(--orange)] badge-dot" />
-        Global Software Studio
-      </div>
-
-      {/* Eyebrow */}
-      <div className="hero-fade-2 text-[13px] font-medium text-[var(--orange)] uppercase tracking-[.1em] mb-4">
+      {/* Eyebrow only — removed badge */}
+      <div className="hero-fade-1 text-[13px] font-medium text-[var(--orange)] uppercase tracking-[.1em] mb-6">
         Idea → Architecture → Launch
       </div>
 
       {/* Headline */}
-      <h1 className="hero-fade-3 font-syne font-extrabold leading-[1.02] tracking-[-0.04em] mb-4"
+      <h1 className="hero-fade-2 font-syne font-extrabold leading-[1.02] tracking-[-0.04em] mb-4"
         style={{ fontSize: 'clamp(44px, 6.5vw, 88px)', maxWidth: 900 }}>
         <span className="text-white">We Build Software</span>
         <br />
