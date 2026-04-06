@@ -33,7 +33,7 @@ export default function Testimonials() {
             style={{ width: 340, padding: 28, background: 'var(--bg2)', borderColor: 'var(--border)' }}>
             <div className="flex gap-[3px] mb-4">
               {Array.from({ length: 5 }).map((_, j) => (
-                <Star key={j} size={13} className="fill-[#FF6200]" style={{ color: 'var(--orange)' }} strokeWidth={0} />
+                <Star key={j} size={13} className="fill-[#FFA500]" style={{ color: 'var(--orange)' }} strokeWidth={0} />
               ))}
             </div>
             <p className="text-[14px] font-light leading-[1.7] mb-5" style={{ color: 'var(--text-2)' }}>&ldquo;{t.text}&rdquo;</p>

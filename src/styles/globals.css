@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --orange: #FF6200;
-  --orange-dim: #CC4E00;
+  --orange: #FFA500;
+  --orange-dim: #CC8400;
   --bg: #0C0C0C;
   --bg2: #141414;
   --bg3: #1C1C1C;

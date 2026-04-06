@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         orange: {
-          DEFAULT: '#FF6200',
-          light: '#FF8C42',
-          deep: '#E04E00',
+          DEFAULT: '#FFA500',
+          light: '#FFB733',
+          deep: '#CC8400',
         },
         black: {
           DEFAULT: '#0A0A0A',

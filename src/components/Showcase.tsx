@@ -17,7 +17,7 @@ const projects = [
     title: 'B2B Operations Platform',
     sub: 'Custom CRM and invoicing system replacing spreadsheets for a London-based logistics company.',
     icon: Building2,
-    bg: '#FF6200',
+    bg: '#FFA500',
     span: false,
   },
   {
