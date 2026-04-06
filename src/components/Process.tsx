@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useReveal } from './useReveal';
 
 const steps = [
   {
@@ -26,18 +26,7 @@ const steps = [
 ];
 
 export default function Process() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const els = sectionRef.current?.querySelectorAll('.reveal');
-    if (!els) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-      { threshold: 0.15 }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal();
 
   return (
     <section id="process" ref={sectionRef} className="py-[120px] px-6 md:px-12 bg-[#111111] relative overflow-hidden">

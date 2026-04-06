@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useReveal } from './useReveal';
 import { Users, Globe2, Award, Handshake } from 'lucide-react';
 
 const pillars = [
@@ -11,18 +11,7 @@ const pillars = [
 ];
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const els = sectionRef.current?.querySelectorAll('.reveal');
-    if (!els) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-      { threshold: 0.1 }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal();
 
   return (
     <section id="about" ref={sectionRef} className="py-[120px] px-6 md:px-12 bg-white">

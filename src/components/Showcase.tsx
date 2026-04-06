@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useReveal } from './useReveal';
 import { Landmark, ShoppingBag, BrainCircuit, ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -31,18 +31,7 @@ const projects = [
 ];
 
 export default function Showcase() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const els = sectionRef.current?.querySelectorAll('.reveal');
-    if (!els) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-      { threshold: 0.1 }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal();
 
   return (
     <section id="work" ref={sectionRef} className="py-[120px] px-6 md:px-12 bg-white">

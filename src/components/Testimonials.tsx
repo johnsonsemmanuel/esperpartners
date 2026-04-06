@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useReveal } from './useReveal';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -12,18 +12,7 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const els = sectionRef.current?.querySelectorAll('.reveal');
-    if (!els) return;
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal();
 
   const doubled = [...testimonials, ...testimonials];
 
