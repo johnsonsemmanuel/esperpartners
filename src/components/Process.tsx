@@ -40,7 +40,7 @@ export default function Process() {
   }, []);
 
   return (
-    <section id="process" ref={sectionRef} className="py-[120px] px-12 bg-[#111111] relative overflow-hidden">
+    <section id="process" ref={sectionRef} className="py-[120px] px-6 md:px-12 bg-[#111111] relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto">
         <div className="reveal">
           <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#FF6200] mb-4">How We Work</div>
@@ -55,7 +55,7 @@ export default function Process() {
           </p>
         </div>
 
-        <div className="grid gap-10" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (
             <div key={step.num} className={`reveal reveal-d${Math.min(i + 1, 3)}`}>
               <div className="font-syne font-extrabold text-white leading-none mb-[-20px] tracking-[-0.04em] select-none"

@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="font-syne font-extrabold text-[22px] tracking-[-0.5px] text-white no-underline block mb-4">
-              Nex<span className="text-[#FF6200]">ora</span>
+              Esper <span className="text-[#FF6200]">Partners</span>
             </Link>
             <p className="text-[14px] text-[#5A5A5A] font-light leading-[1.7]">
               Building the software that powers tomorrow's most ambitious businesses. Excellence is our only standard.
@@ -40,7 +40,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-white/[0.06] pt-7 flex justify-between items-center flex-wrap gap-4">
-          <div className="text-[13px] text-[#5A5A5A] font-light">© 2025 Esper Partners. All rights reserved.</div>
+          <div className="text-[13px] text-[#5A5A5A] font-light">© 2026 Esper Partners. All rights reserved.</div>
           <div className="flex items-center gap-2 text-[12px] text-[#5A5A5A]">
             Built with <span className="text-[#FF6200]">♥</span> for the world
           </div>

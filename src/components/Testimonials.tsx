@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Star } from 'lucide-react';
 
 const testimonials = [
-  { stars: 5, text: "Esper Partners didn't just build our platform — they thought like a co-founder. The product shipped on time, under budget, and it's the best technical decision we've made.", name: 'Amara Diallo', role: 'CEO, PaySwift Africa', initial: 'A' },
-  { stars: 5, text: "The engineering quality is world-class. Their code is clean, their communication impeccable, and the UI transitions feel like something Apple would ship.", name: 'James Thornton', role: 'CTO, NovaMed UK', initial: 'J' },
-  { stars: 5, text: "We went from a Figma file to a live, scalable platform in 14 weeks. Our investors were blown away. Esper Partners is now our permanent engineering partner.", name: 'Sofia Mendez', role: 'Founder, TradeLoop Mexico', initial: 'S' },
-  { stars: 5, text: "Three agencies failed before Esper Partners. They understood the complexity from Day 1 and delivered an enterprise system we're proud to show our board.", name: 'Kwame Asante', role: 'Director of Digital, GoldCoast Bank', initial: 'K' },
-  { stars: 5, text: "The attention to detail is exceptional. Every micro-interaction, every loading state — they cared about things most developers ignore completely.", name: 'Lena Fischer', role: 'Head of Product, Karbon DE', initial: 'L' },
+  { text: "Esper Partners didn't just build our platform — they thought like a co-founder. The product shipped on time, under budget, and it's the best technical decision we've made.", name: 'Amara Diallo', role: 'CEO, PaySwift Africa', initial: 'A' },
+  { text: "The engineering quality is world-class. Their code is clean, their communication impeccable, and the UI transitions feel like something Apple would ship.", name: 'James Thornton', role: 'CTO, NovaMed UK', initial: 'J' },
+  { text: "We went from a Figma file to a live, scalable platform in 14 weeks. Our investors were blown away. Esper Partners is now our permanent engineering partner.", name: 'Sofia Mendez', role: 'Founder, TradeLoop Mexico', initial: 'S' },
+  { text: "Three agencies failed before Esper Partners. They understood the complexity from Day 1 and delivered an enterprise system we're proud to show our board.", name: 'Kwame Asante', role: 'Director of Digital, GoldCoast Bank', initial: 'K' },
+  { text: "The attention to detail is exceptional. Every micro-interaction, every loading state — they cared about things most developers ignore completely.", name: 'Lena Fischer', role: 'Head of Product, Karbon DE', initial: 'L' },
 ];
 
 export default function Testimonials() {
@@ -28,7 +29,7 @@ export default function Testimonials() {
 
   return (
     <section ref={sectionRef} className="py-[120px] bg-[#F7F7F5] overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-12">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         <div className="reveal">
           <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#FF6200] mb-4">Client Stories</div>
         </div>
@@ -40,13 +41,9 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Infinite scroll track */}
       <div
         className="testi-track flex gap-6"
-        style={{
-          width: 'max-content',
-          animation: 'scrollLeft 30s linear infinite',
-        }}
+        style={{ width: 'max-content', animation: 'scrollLeft 30s linear infinite' }}
       >
         {doubled.map((t, i) => (
           <div
@@ -54,7 +51,11 @@ export default function Testimonials() {
             className="bg-white rounded-[20px] border border-[#E0E0E0] flex-shrink-0"
             style={{ width: 360, padding: 32 }}
           >
-            <div className="text-[#FF6200] text-[14px] mb-4">{'★'.repeat(t.stars)}</div>
+            <div className="flex gap-[3px] mb-4">
+              {Array.from({ length: 5 }).map((_, j) => (
+                <Star key={j} size={13} className="text-[#FF6200] fill-[#FF6200]" strokeWidth={0} />
+              ))}
+            </div>
             <p className="text-[15px] text-black font-light leading-[1.7] mb-6">"{t.text}"</p>
             <div className="flex items-center gap-3">
               <div

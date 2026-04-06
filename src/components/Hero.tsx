@@ -1,23 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { ShoppingCart, LayoutDashboard, HeartPulse, Landmark, Link2, BrainCircuit, Lightbulb, PenLine, Settings2, FlaskConical, Rocket, ArrowRight } from 'lucide-react';
 import Cursor from './Cursor';
 
 const floatingCards = [
-  { icon: '🛒', label: 'E-Commerce Platform', style: { top: '12%', left: '3%' }, duration: '7s', delay: '0s' },
-  { icon: '📊', label: 'Analytics Dashboard', style: { top: '20%', right: '2%' }, duration: '6.5s', delay: '1.2s' },
-  { icon: '🏥', label: 'Health Management App', style: { top: '55%', left: '1%' }, duration: '8s', delay: '2.1s' },
-  { icon: '🏦', label: 'FinTech Solution', style: { top: '62%', right: '3%' }, duration: '7.5s', delay: '0.7s' },
-  { icon: '🔗', label: 'API Integration', style: { top: '80%', left: '8%' }, duration: '6s', delay: '3s' },
-  { icon: '🤖', label: 'AI-Powered Automation', style: { top: '8%', right: '14%' }, duration: '9s', delay: '1.8s' },
+  { icon: ShoppingCart, label: 'E-Commerce Platform', style: { top: '12%', left: '3%' }, duration: '7s', delay: '0s' },
+  { icon: LayoutDashboard, label: 'Analytics Dashboard', style: { top: '20%', right: '2%' }, duration: '6.5s', delay: '1.2s' },
+  { icon: HeartPulse, label: 'Health Management App', style: { top: '55%', left: '1%' }, duration: '8s', delay: '2.1s' },
+  { icon: Landmark, label: 'FinTech Solution', style: { top: '62%', right: '3%' }, duration: '7.5s', delay: '0.7s' },
+  { icon: Link2, label: 'API Integration', style: { top: '80%', left: '8%' }, duration: '6s', delay: '3s' },
+  { icon: BrainCircuit, label: 'AI-Powered Automation', style: { top: '8%', right: '14%' }, duration: '9s', delay: '1.8s' },
 ];
 
 const stages = [
-  { emoji: '💡', label: 'Idea', caption: 'Spark of genius' },
-  { emoji: '✏️', label: 'Design', caption: 'Blueprint it' },
-  { emoji: '⚙️', label: 'Build', caption: 'Engineering magic' },
-  { emoji: '🧪', label: 'Test', caption: 'Quality assured' },
-  { emoji: '🚀', label: 'Launch', caption: 'Live worldwide' },
+  { icon: Lightbulb, label: 'Idea', caption: 'Spark of genius' },
+  { icon: PenLine, label: 'Design', caption: 'Blueprint it' },
+  { icon: Settings2, label: 'Build', caption: 'Engineering magic' },
+  { icon: FlaskConical, label: 'Test', caption: 'Quality assured' },
+  { icon: Rocket, label: 'Launch', caption: 'Live worldwide' },
 ];
 
 export default function Hero() {
@@ -44,21 +45,24 @@ export default function Hero() {
 
       {/* Floating cards — hidden on mobile */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
-        {floatingCards.map((card, i) => (
-          <div
-            key={i}
-            className="absolute flex items-center gap-3 bg-white border border-[#E0E0E0] rounded-2xl px-[18px] py-[14px] text-[13px] font-medium text-black shadow-[0_8px_40px_rgba(0,0,0,0.08)] opacity-85 animate-float"
-            style={{
-              ...card.style,
-              '--duration': card.duration,
-              '--delay': card.delay,
-              animation: `floatDrift ${card.duration} ease-in-out ${card.delay} infinite`,
-            } as React.CSSProperties}
-          >
-            <span className="w-8 h-8 bg-[#F2F2F2] rounded-[10px] flex items-center justify-center text-base">{card.icon}</span>
-            {card.label}
-          </div>
-        ))}
+        {floatingCards.map((card, i) => {
+          const Icon = card.icon;
+          return (
+            <div
+              key={i}
+              className="absolute flex items-center gap-3 bg-white border border-[#E0E0E0] rounded-2xl px-[18px] py-[14px] text-[13px] font-medium text-black shadow-[0_8px_40px_rgba(0,0,0,0.08)] opacity-85"
+              style={{
+                ...card.style,
+                animation: `floatDrift ${card.duration} ease-in-out ${card.delay} infinite`,
+              } as React.CSSProperties}
+            >
+              <span className="w-8 h-8 bg-[#F2F2F2] rounded-[10px] flex items-center justify-center">
+                <Icon size={15} className="text-[#1A1A1A]" strokeWidth={1.5} />
+              </span>
+              {card.label}
+            </div>
+          );
+        })}
       </div>
 
       {/* Tag */}
@@ -85,7 +89,7 @@ export default function Hero() {
       <div className="hero-fade-4 flex gap-4 items-center mb-24 flex-wrap justify-center">
         <a
           href="#contact"
-          className="inline-block px-9 py-4 rounded-full text-white font-semibold text-[15px] transition-all duration-200 hover:scale-[1.04]"
+          className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white font-semibold text-[15px] transition-all duration-200 hover:scale-[1.04]"
           style={{ background: '#FF6200', boxShadow: '0 8px 32px rgba(255,98,0,0.25)' }}
         >
           Start Building
@@ -94,11 +98,11 @@ export default function Hero() {
           href="#work"
           className="inline-flex items-center gap-2 px-[30px] py-[15px] rounded-full border border-[#E0E0E0] text-black font-medium text-[15px] transition-all duration-200 hover:border-black hover:scale-[1.02]"
         >
-          See Our Work <span>→</span>
+          See Our Work <ArrowRight size={15} strokeWidth={2} />
         </a>
       </div>
 
-      {/* Orbit */}
+      {/* Stage tracker */}
       <div className="hero-fade-5 relative w-full" style={{ maxWidth: 780, height: 340 }}>
         {/* Track */}
         <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-[#E0E0E0]">
@@ -111,6 +115,7 @@ export default function Hero() {
         {/* Stages */}
         <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between items-center">
           {stages.map((stage, i) => {
+            const Icon = stage.icon;
             const isActive = i === activeStage;
             const isDone = i < activeStage;
             return (
@@ -128,14 +133,19 @@ export default function Hero() {
 
                 {/* Bubble */}
                 <div
-                  className="stage-bubble relative z-[2] flex items-center justify-center text-[26px] bg-white border-2 border-[#E0E0E0] shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
+                  className="stage-bubble relative z-[2] flex items-center justify-center bg-white border-2 border-[#E0E0E0] shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
                   style={{
                     width: 60, height: 60, borderRadius: 18,
                     ...(isActive ? { borderColor: '#FF6200', background: '#FF6200', transform: 'scale(1.15)', boxShadow: '0 8px 32px rgba(255,98,0,0.3)' } : {}),
                     ...(isDone ? { borderColor: '#FF6200' } : {}),
                   }}
                 >
-                  {stage.emoji}
+                  <Icon
+                    size={22}
+                    strokeWidth={1.5}
+                    className="transition-colors duration-300"
+                    style={{ color: isActive ? '#fff' : isDone ? '#FF6200' : '#A0A0A0' }}
+                  />
                 </div>
 
                 {/* Label */}
