@@ -218,7 +218,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact"
+              <a href="/contact"
                 className="inline-flex items-center justify-center gap-2 py-3 rounded-full text-[13px] font-semibold transition-all duration-200 hover:scale-[1.02]"
                 style={{ background: t.highlight ? '#fff' : 'var(--orange)', color: t.highlight ? 'var(--orange)' : '#fff' }}>
                 {t.cta} <ArrowRight size={13} strokeWidth={2} />
@@ -275,7 +275,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact"
+              <a href="/contact"
                 className="inline-flex items-center justify-center gap-2 py-3 rounded-full text-[13px] font-semibold transition-all duration-200 hover:scale-[1.02]"
                 style={{ background: 'var(--orange)', color: '#fff' }}>
                 Get Started <ArrowRight size={13} strokeWidth={2} />

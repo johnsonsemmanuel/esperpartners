@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
-  { label: 'Services', href: '#features' },
-  { label: 'Process', href: '#steps' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Work', href: '#work' },
+  { label: 'Services', href: '/#features' },
+  { label: 'Process', href: '/#steps' },
+  { label: 'Work', href: '/#work' },
+  { label: 'About', href: '/about' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 export default function Navbar() {
@@ -61,7 +62,7 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <a href="#contact"
+        <a href="/contact"
           className="hidden md:inline-flex items-center px-5 py-[8px] rounded-full text-white font-semibold text-[13px] transition-all duration-200 hover:scale-[1.04] flex-shrink-0"
           style={{ background: 'var(--orange)' }}>
           Start a Project
@@ -97,7 +98,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-1"
+          <a href="/contact" className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-1"
             style={{ background: 'var(--orange)' }}>
             Start a Project
           </a>
