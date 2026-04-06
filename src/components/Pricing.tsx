@@ -273,61 +273,74 @@ export default function Pricing() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
               {active.tiers.map((t) => (
                 <motion.div key={t.name}
-                  className="rounded-[20px] border flex flex-col"
+                  className="rounded-[20px] flex flex-col relative"
                   style={{
-                    background: t.highlight ? 'var(--orange)' : 'var(--bg2)',
-                    borderColor: t.highlight ? 'var(--orange)' : 'var(--border)',
+                    background: 'var(--bg2)',
+                    border: t.highlight
+                      ? '1.5px solid var(--orange)'
+                      : '1px solid var(--border)',
                     padding: '28px 24px',
+                    boxShadow: t.highlight
+                      ? '0 0 32px rgba(255,165,0,0.15), inset 0 0 24px rgba(255,165,0,0.04)'
+                      : 'none',
                   }}
                   whileHover={{ scale: 1.02, y: -4 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
 
+                  {/* Most Popular badge */}
+                  {t.highlight && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-[4px] rounded-full text-[11px] font-bold uppercase tracking-[.08em] text-white"
+                      style={{ background: 'var(--orange)', whiteSpace: 'nowrap' }}>
+                      Most Popular
+                    </div>
+                  )}
+
                   <div className="text-[11px] font-bold uppercase tracking-[.1em] mb-3"
-                    style={{ color: t.highlight ? 'rgba(255,255,255,0.7)' : 'var(--text-3)' }}>
+                    style={{ color: t.highlight ? 'var(--orange)' : 'var(--text-3)' }}>
                     {t.name}
                   </div>
 
                   {/* Price */}
                   <div className="font-syne font-extrabold tracking-[-0.04em] leading-none mb-1"
-                    style={{ fontSize: 36, color: t.highlight ? '#fff' : 'var(--text)' }}>
+                    style={{ fontSize: 36, color: 'var(--text)' }}>
                     {t.usd === 0 ? 'Custom' : fmt(t.usd, currency)}
                     {'period' in t && t.usd > 0 && (
-                      <span className="text-[16px] font-normal ml-1" style={{ color: t.highlight ? 'rgba(255,255,255,0.6)' : 'var(--text-3)' }}>
+                      <span className="text-[16px] font-normal ml-1" style={{ color: 'var(--text-3)' }}>
                         {(t as { period?: string }).period}
                       </span>
                     )}
                   </div>
 
                   {t.usd > 0 && currency !== 'USD' && (
-                    <div className="text-[12px] mb-3" style={{ color: t.highlight ? 'rgba(255,255,255,0.5)' : 'var(--text-3)' }}>
+                    <div className="text-[12px] mb-3" style={{ color: 'var(--text-3)' }}>
                       ≈ ${t.usd.toLocaleString()} USD
                     </div>
                   )}
                   {t.usd === 0 && (
-                    <div className="text-[12px] mb-3" style={{ color: t.highlight ? 'rgba(255,255,255,0.5)' : 'var(--text-3)' }}>
+                    <div className="text-[12px] mb-3" style={{ color: 'var(--text-3)' }}>
                       Let&apos;s talk scope
                     </div>
                   )}
 
                   <p className="text-[13px] font-light leading-[1.6] mb-5 pb-5 mt-1"
-                    style={{ color: t.highlight ? 'rgba(255,255,255,0.75)' : 'var(--text-2)', borderBottom: `1px solid ${t.highlight ? 'rgba(255,255,255,0.15)' : 'var(--border)'}` }}>
+                    style={{ color: 'var(--text-2)', borderBottom: '1px solid var(--border)' }}>
                     {t.desc}
                   </p>
 
                   <ul className="flex flex-col gap-[10px] mb-7 flex-1">
                     {t.features.map((f) => (
                       <li key={f} className="flex items-start gap-3 text-[13px] font-light"
-                        style={{ color: t.highlight ? 'rgba(255,255,255,0.85)' : 'var(--text-2)' }}>
+                        style={{ color: 'var(--text-2)' }}>
                         <CheckCircle2 size={14} strokeWidth={2} className="flex-shrink-0 mt-[2px]"
-                          style={{ color: t.highlight ? '#fff' : 'var(--orange)' }} />
+                          style={{ color: 'var(--orange)' }} />
                         {f}
                       </li>
                     ))}
                   </ul>
 
                   <a href="/contact"
-                    className="inline-flex items-center justify-center gap-2 py-3 rounded-full text-[13px] font-semibold transition-all duration-200 hover:scale-[1.02]"
-                    style={{ background: t.highlight ? '#fff' : 'var(--orange)', color: t.highlight ? 'var(--orange)' : '#fff' }}>
+                    className="inline-flex items-center justify-center gap-2 py-3 rounded-full text-[13px] font-semibold transition-all duration-200 hover:scale-[1.02] text-white"
+                    style={{ background: 'var(--orange)' }}>
                     {t.usd === 0 ? 'Get a Custom Quote' : 'Start This Project'} <ArrowRight size={13} strokeWidth={2} />
                   </a>
                 </motion.div>

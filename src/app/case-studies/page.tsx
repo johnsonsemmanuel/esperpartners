@@ -6,8 +6,9 @@ import type { Metadata } from 'next';
 import { ArrowUpRight, ShoppingCart, Building2, Smartphone, Globe, Bot } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Case Studies — Esper Partners',
-  description: 'Real projects built for clients in Ghana, Nigeria, the UK, and the USA.',
+  title: 'Case Studies',
+  description: 'Real software projects built by Esper Partners for clients in Ghana, Nigeria, the UK, and the USA — marketplaces, fintech apps, SaaS platforms, and AI tools.',
+  alternates: { canonical: 'https://esperpartners.vercel.app/case-studies' },
 };
 
 const cases = [

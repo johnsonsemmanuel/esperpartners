@@ -5,8 +5,9 @@ import type { Metadata } from 'next';
 import { ArrowRight, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Blog — Esper Partners',
-  description: 'Insights on software development, building products in Africa, and engineering best practices.',
+  title: 'Blog',
+  description: 'Practical insights on software development, building products in Ghana and Nigeria, Paystack integration, mobile app best practices, and engineering for African markets.',
+  alternates: { canonical: 'https://esperpartners.vercel.app/blog' },
 };
 
 const posts = [

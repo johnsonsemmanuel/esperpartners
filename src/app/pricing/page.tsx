@@ -6,8 +6,9 @@ import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing — Esper Partners',
-  description: 'Transparent fixed-price project rates and monthly retainer plans in USD, GHS, and NGN.',
+  title: 'Pricing',
+  description: 'Transparent software development pricing in USD, GHS (Cedis), and NGN (Naira). Websites from $800, mobile apps from $5,000, web apps from $4,500. Fixed-price projects and monthly retainers.',
+  alternates: { canonical: 'https://esperpartners.vercel.app/pricing' },
 };
 
 export default function PricingPage() {

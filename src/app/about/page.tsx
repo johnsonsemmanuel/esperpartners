@@ -8,8 +8,9 @@ import type { Metadata } from 'next';
 import { Users, Globe2, ShieldCheck, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About — Esper Partners',
-  description: 'We are a software engineering studio working with businesses in Ghana, Nigeria, the UK, the USA, and Togo.',
+  title: 'About Us',
+  description: 'Esper Partners is a software engineering studio based in Ghana, working with businesses in Nigeria, the UK, the USA, and Togo. We build software that solves real problems.',
+  alternates: { canonical: 'https://esperpartners.vercel.app/about' },
 };
 
 const team = [

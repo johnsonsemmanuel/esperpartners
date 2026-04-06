@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ReactNode, useRef } from 'react';
 
 interface FadeInProps {
   children: ReactNode;
@@ -11,13 +11,16 @@ interface FadeInProps {
   style?: React.CSSProperties;
 }
 
-export function FadeIn({ children, delay = 0, y = 28, className, style }: FadeInProps) {
+// Sharper easing — feels snappier, less floaty
+const ease = [0.22, 1, 0.36, 1] as const;
+
+export function FadeIn({ children, delay = 0, y = 32, className, style }: FadeInProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.65, delay, ease }}
       className={className}
       style={style}
     >
@@ -26,13 +29,23 @@ export function FadeIn({ children, delay = 0, y = 28, className, style }: FadeIn
   );
 }
 
-export function FadeInStagger({ children, className, style }: { children: ReactNode; className?: string; style?: React.CSSProperties }) {
+export function FadeInStagger({
+  children,
+  className,
+  style,
+  stagger = 0.09,
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  stagger?: number;
+}) {
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
-      variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+      viewport={{ once: true, margin: '-60px' }}
+      variants={{ visible: { transition: { staggerChildren: stagger } } }}
       className={className}
       style={style}
     >
@@ -41,17 +54,76 @@ export function FadeInStagger({ children, className, style }: { children: ReactN
   );
 }
 
-export function FadeInItem({ children, className, style }: { children: ReactNode; className?: string; style?: React.CSSProperties }) {
+export function FadeInItem({
+  children,
+  className,
+  style,
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
+        hidden: { opacity: 0, y: 28 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease },
+        },
       }}
       className={className}
       style={style}
     >
       {children}
     </motion.div>
+  );
+}
+
+// Magnetic hover button — follows cursor within its bounds
+// Use as a drop-in wrapper for <a> or <button> elements
+export function MagneticWrap({
+  children,
+  className,
+  style,
+  as: Tag = 'div',
+  ...rest
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  as?: React.ElementType;
+  [key: string]: unknown;
+}) {
+  const ref = useRef<HTMLElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 340, damping: 20 });
+  const sy = useSpring(y, { stiffness: 340, damping: 20 });
+
+  const handleMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.28);
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.28);
+  };
+
+  const reset = () => { x.set(0); y.set(0); };
+
+  const MotionTag = motion(Tag);
+
+  return (
+    <MotionTag
+      ref={ref}
+      style={{ ...style, x: sx, y: sy }}
+      className={className}
+      onMouseMove={handleMove}
+      onMouseLeave={reset}
+      whileTap={{ scale: 0.97 }}
+      {...rest}
+    >
+      {children}
+    </MotionTag>
   );
 }

@@ -6,8 +6,9 @@ import type { Metadata } from 'next';
 import { Globe, Smartphone, Building2, Bot, Cloud, ShieldCheck, ShoppingCart, BarChart3, Plug, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Services — Esper Partners',
-  description: 'Web development, mobile apps, enterprise software, AI automation, cloud & DevOps — built for businesses in Ghana, Nigeria, the UK and beyond.',
+  title: 'Services',
+  description: 'Web development, mobile apps, enterprise software, AI automation, e-commerce, and cloud services. Built for businesses in Ghana, Nigeria, the UK, and the USA. Starting from $800.',
+  alternates: { canonical: 'https://esperpartners.vercel.app/services' },
 };
 
 const services = [
