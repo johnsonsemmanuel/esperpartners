@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* ── Dark mode (default) ── */
+:root,
+[data-theme="dark"] {
   --orange: #FFA500;
   --orange-dim: #CC8400;
   --bg: #0C0C0C;
@@ -17,6 +19,30 @@
   --text-3: rgba(255,255,255,0.3);
   --ease: cubic-bezier(0.25,0.1,0.25,1);
   --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --nav-bg-idle: rgba(12,12,12,0.6);
+  --nav-bg-scrolled: rgba(12,12,12,0.88);
+  --hero-overlay: rgba(0,0,0,0.58);
+  color-scheme: dark;
+}
+
+/* ── Light mode (cream) ── */
+[data-theme="light"] {
+  --orange: #E8820A;
+  --orange-dim: #C06D08;
+  --bg: #FAF7F2;
+  --bg2: #F2EDE4;
+  --bg3: #EAE3D8;
+  --border: rgba(26,22,20,0.09);
+  --border-hover: rgba(26,22,20,0.18);
+  --text: #1A1614;
+  --text-2: rgba(26,22,20,0.6);
+  --text-3: rgba(26,22,20,0.38);
+  --ease: cubic-bezier(0.25,0.1,0.25,1);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --nav-bg-idle: rgba(250,247,242,0.6);
+  --nav-bg-scrolled: rgba(250,247,242,0.9);
+  --hero-overlay: rgba(250,247,242,0.55);
+  color-scheme: light;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,6 +54,7 @@ body {
   color: var(--text);
   overflow-x: hidden;
   cursor: none;
+  transition: background 0.35s var(--ease), color 0.35s var(--ease);
 }
 
 /* ── Cursor ── */

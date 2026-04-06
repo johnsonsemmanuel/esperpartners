@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
-import WhatsApp from '@/components/WhatsApp';
+import ContactWidget from '@/components/ContactWidget';
+import ThemeProvider from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'Esper Partners — Software Excellence',
@@ -15,10 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        {children}
-        <WhatsApp />
+        <ThemeProvider>
+          {children}
+          <ContactWidget />
+        </ThemeProvider>
       </body>
     </html>
   );

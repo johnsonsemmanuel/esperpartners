@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTheme } from './ThemeProvider';
+import { Sun, Moon } from 'lucide-react';
 
 const navLinks = [
   { label: 'Services', href: '/#features' },
@@ -15,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -35,12 +38,11 @@ export default function Navbar() {
           padding: '0 12px 0 16px',
           borderRadius: 100,
           border: '1px solid var(--border-hover)',
-          background: scrolled
-            ? 'rgba(12,12,12,0.85)'
-            : 'rgba(12,12,12,0.6)',
+          background: scrolled ? 'var(--nav-bg-scrolled)' : 'var(--nav-bg-idle)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          boxShadow: scrolled ? '0 8px 40px rgba(0,0,0,0.4)' : '0 4px 24px rgba(0,0,0,0.2)',
+          boxShadow: scrolled ? '0 8px 40px rgba(0,0,0,0.25)' : '0 4px 24px rgba(0,0,0,0.1)',
+          transition: 'background 0.3s var(--ease), box-shadow 0.3s var(--ease)',
         }}
       >
         {/* Logo */}
@@ -61,10 +63,21 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Theme toggle */}
+        <button
+          onClick={toggle}
+          aria-label="Toggle colour theme"
+          className="hidden md:flex items-center justify-center w-8 h-8 rounded-full flex-shrink-0 transition-colors duration-200"
+          style={{ background: 'var(--bg3)', border: '1px solid var(--border)', cursor: 'none' }}>
+          {theme === 'dark'
+            ? <Sun size={14} style={{ color: 'var(--text-2)' }} strokeWidth={1.5} />
+            : <Moon size={14} style={{ color: 'var(--text-2)' }} strokeWidth={1.5} />}
+        </button>
+
         {/* CTA */}
         <a href="/contact"
           className="hidden md:inline-flex items-center px-5 py-[8px] rounded-full text-white font-semibold text-[13px] transition-all duration-200 hover:scale-[1.04] flex-shrink-0"
-          style={{ background: 'var(--orange)' }}>
+          style={{ background: 'var(--orange)', marginLeft: 8 }}>
           Start a Project
         </a>
 
@@ -102,6 +115,12 @@ export default function Navbar() {
             style={{ background: 'var(--orange)' }}>
             Start a Project
           </a>
+          <button onClick={toggle}
+            className="flex items-center justify-center gap-2 py-2 text-[13px] font-medium"
+            style={{ color: 'var(--text-3)', cursor: 'none' }}>
+            {theme === 'dark' ? <Sun size={13} strokeWidth={1.5} /> : <Moon size={13} strokeWidth={1.5} />}
+            {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          </button>
         </div>
       </div>
     </div>

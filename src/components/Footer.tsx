@@ -4,9 +4,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const footerLinks = {
-  Services: ['Web Development', 'Mobile Apps', 'Enterprise Software', 'AI & Automation', 'Cloud & DevOps'],
-  Company: ['About Us', 'Careers', 'Blog', 'Case Studies', 'Contact'],
-  Connect: ['LinkedIn', 'GitHub', 'Dribbble', 'Twitter / X'],
+  Services: [
+    { label: 'Web Development', href: '/services' },
+    { label: 'Mobile Apps', href: '/services' },
+    { label: 'Enterprise Software', href: '/services' },
+    { label: 'AI & Automation', href: '/services' },
+    { label: 'Cloud & DevOps', href: '/services' },
+  ],
+  Company: [
+    { label: 'About Us', href: '/about' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  Connect: [
+    { label: 'LinkedIn', href: 'https://linkedin.com/company/esperpartners' },
+    { label: 'GitHub', href: 'https://github.com/johnsonsemmanuel' },
+    { label: 'Twitter / X', href: 'https://twitter.com/esperpartners' },
+    { label: 'WhatsApp', href: 'https://wa.me/233208713610' },
+  ],
 };
 
 export default function Footer() {
@@ -28,10 +45,10 @@ export default function Footer() {
               <h4 className="text-[11px] font-bold uppercase tracking-[.1em] mb-4" style={{ color: 'var(--text-3)' }}>{title}</h4>
               <ul className="list-none flex flex-col gap-[10px]">
                 {links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-[13px] font-light no-underline transition-colors duration-200 hover:text-white"
+                  <li key={l.label}>
+                    <a href={l.href} className="text-[13px] font-light no-underline transition-colors duration-200 hover:text-white"
                       style={{ color: 'var(--text-3)' }}>
-                      {l}
+                      {l.label}
                     </a>
                   </li>
                 ))}
