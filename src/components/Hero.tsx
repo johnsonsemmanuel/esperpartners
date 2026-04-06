@@ -16,54 +16,91 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden"
-      style={{ padding: '100px 40px 80px' }}>
-      <div className="hero-bg" />
-      <div className="hero-grid" />
+      style={{ padding: '120px 40px 80px' }}>
 
-      {/* Eyebrow only — removed badge */}
-      <div className="hero-fade-1 text-[13px] font-medium text-[var(--orange)] uppercase tracking-[.1em] mb-6">
-        Idea → Architecture → Launch
-      </div>
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
 
-      {/* Headline */}
-      <h1 className="hero-fade-2 font-syne font-extrabold leading-[1.02] tracking-[-0.04em] mb-4"
-        style={{ fontSize: 'clamp(44px, 6.5vw, 88px)', maxWidth: 900 }}>
-        <span className="text-white">We Build Software</span>
-        <br />
-        <span className="relative inline-block" style={{ minHeight: '1.1em', overflow: 'hidden' }}>
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={idx}
-              initial={{ y: '100%', opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: '-100%', opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-[var(--orange)] block"
-            >
-              {words[idx]}
-            </motion.span>
-          </AnimatePresence>
-        </span>
-      </h1>
+      {/* Dark overlay — keeps text readable */}
+      <div className="absolute inset-0" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(12,12,12,0.72) 0%, rgba(12,12,12,0.60) 60%, rgba(12,12,12,0.88) 100%)' }} />
 
-      {/* Sub */}
-      <p className="hero-fade-3 font-light leading-[1.7] mb-11"
-        style={{ fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'var(--text-2)', maxWidth: 520 }}>
-        From sleek websites to enterprise-grade platforms — we engineer software that powers ambitious businesses across the world.
-      </p>
+      {/* Grid overlay */}
+      <div className="hero-grid absolute inset-0" style={{ zIndex: 2 }} />
 
-      {/* CTAs */}
-      <div className="hero-fade-4 flex gap-4 items-center justify-center flex-wrap">
-        <a href="#contact"
-          className="inline-flex items-center gap-2 px-9 py-[15px] rounded-full text-white font-semibold text-[15px] transition-all duration-200 hover:scale-[1.04]"
-          style={{ background: 'var(--orange)', boxShadow: '0 8px 32px rgba(255,98,0,0.3)' }}>
-          Start a Project
-        </a>
-        <a href="#features"
-          className="inline-flex items-center gap-2 px-7 py-[14px] rounded-full border font-normal text-[15px] transition-all duration-200 hover:border-white/30"
-          style={{ borderColor: 'var(--border-hover)', color: 'var(--text-2)' }}>
-          See What We Build <ArrowRight size={15} strokeWidth={1.5} />
-        </a>
+      {/* Orange glow */}
+      <div className="absolute pointer-events-none" style={{
+        zIndex: 2,
+        top: '-10%', left: '50%', transform: 'translateX(-50%)',
+        width: 700, height: 400,
+        background: 'radial-gradient(ellipse, rgba(255,98,0,0.10) 0%, transparent 70%)',
+        filter: 'blur(40px)',
+      }} />
+
+      {/* Content */}
+      <div className="relative flex flex-col items-center" style={{ zIndex: 3 }}>
+
+        {/* Eyebrow */}
+        <div className="hero-fade-1 text-[13px] font-medium uppercase tracking-[.1em] mb-6"
+          style={{ color: 'var(--orange)' }}>
+          Idea → Architecture → Launch
+        </div>
+
+        {/* Headline */}
+        <h1 className="hero-fade-2 font-syne font-extrabold leading-[1.02] tracking-[-0.04em] mb-5 text-center"
+          style={{ fontSize: 'clamp(44px, 6.5vw, 88px)', maxWidth: 900 }}>
+          <span className="text-white">We Build Software</span>
+          <br />
+          <span className="relative inline-block" style={{ minHeight: '1.1em', overflow: 'hidden' }}>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={idx}
+                initial={{ y: '100%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: '-100%', opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                className="block"
+                style={{ color: 'var(--orange)' }}
+              >
+                {words[idx]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
+        </h1>
+
+        {/* Sub */}
+        <p className="hero-fade-3 font-light leading-[1.75] mb-10 text-center"
+          style={{ fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'rgba(255,255,255,0.7)', maxWidth: 520 }}>
+          From sleek websites to enterprise-grade platforms — we engineer software that powers ambitious businesses across Ghana, Nigeria, the UK, the USA, and Togo.
+        </p>
+
+        {/* CTAs */}
+        <div className="hero-fade-4 flex gap-4 items-center justify-center flex-wrap">
+          <a href="#contact"
+            className="inline-flex items-center gap-2 px-9 py-[15px] rounded-full text-white font-semibold text-[15px] transition-all duration-200 hover:scale-[1.04]"
+            style={{ background: 'var(--orange)', boxShadow: '0 8px 32px rgba(255,98,0,0.35)' }}>
+            Start a Project
+          </a>
+          <a href="#features"
+            className="inline-flex items-center gap-2 px-7 py-[14px] rounded-full border font-normal text-[15px] transition-all duration-200 hover:border-white/40"
+            style={{ borderColor: 'rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(8px)', background: 'rgba(255,255,255,0.05)' }}>
+            See What We Build <ArrowRight size={15} strokeWidth={1.5} />
+          </a>
+        </div>
+
+        {/* Scroll hint */}
+        <div className="hero-fade-4 mt-16 flex flex-col items-center gap-2 opacity-40">
+          <div className="w-[1px] h-10 bg-white/40" style={{ animation: 'scrollHint 1.8s ease-in-out infinite' }} />
+          <span className="text-[11px] uppercase tracking-[.12em] text-white/50">Scroll</span>
+        </div>
       </div>
     </section>
   );
