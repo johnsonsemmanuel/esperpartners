@@ -9,6 +9,7 @@ export function useReveal() {
     const els = ref.current?.querySelectorAll('.reveal');
     if (!els?.length) return;
 
+    // Immediately show anything already in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -18,7 +19,7 @@ export function useReveal() {
           }
         });
       },
-      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0, rootMargin: '0px' }
     );
 
     els.forEach((el) => observer.observe(el));
