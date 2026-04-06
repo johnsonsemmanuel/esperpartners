@@ -117,18 +117,6 @@ export default function Hero() {
       {/* ── Content ── */}
       <div className="relative flex flex-col items-center" style={{ zIndex: 1, maxWidth: 880, width: '100%' }}>
 
-        {/* Eyebrow pill */}
-        <motion.div {...fadeUp(0.1)}
-          className="inline-flex items-center gap-2 px-4 py-[7px] rounded-full mb-7 text-[12px] font-semibold uppercase tracking-[.1em]"
-          style={{
-            background: 'rgba(255,165,0,0.1)',
-            border: '1px solid rgba(255,165,0,0.25)',
-            color: 'var(--orange)',
-          }}>
-          <span className="w-[6px] h-[6px] rounded-full badge-dot" style={{ background: 'var(--orange)' }} />
-          Software Studio · Africa &amp; Global
-        </motion.div>
-
         {/* Main headline */}
         <motion.h1
           {...fadeUp(0.2)}
