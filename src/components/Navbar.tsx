@@ -5,10 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
+  { label: 'Services', href: '#features' },
+  { label: 'Process', href: '#steps' },
   { label: 'Work', href: '#work' },
-  { label: 'About', href: '#about' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Navbar() {
@@ -22,47 +22,35 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[1000] nav-glass transition-all duration-300 ${
-        scrolled ? 'shadow-[0_2px_32px_rgba(0,0,0,0.4)]' : ''
-      }`}
-      style={{ height: 64, display: 'flex', alignItems: 'center', padding: '0 48px' }}
-    >
+    <nav className={`nav-glass fixed top-0 left-0 right-0 z-[900] flex items-center ${scrolled ? 'scrolled' : ''}`}
+      style={{ height: 60, padding: '0 40px' }}>
       <div className="flex items-center justify-between w-full max-w-[1400px] mx-auto">
-        {/* Logo */}
         <Link href="/" className="no-underline flex items-center">
-          <Image src="/logo.png" alt="Esper Partners" width={40} height={40} className="rounded-lg" priority />
+          <Image src="/logo.png" alt="Esper Partners" width={36} height={36} className="rounded-lg" priority />
         </Link>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex gap-9 list-none">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-200 hover:text-white"
-              >
-                {link.label}
+        <ul className="hidden md:flex gap-8 list-none ml-auto mr-8">
+          {navLinks.map((l) => (
+            <li key={l.label}>
+              <a href={l.href} className="text-[14px] no-underline transition-colors duration-200"
+                style={{ color: 'var(--text-2)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}>
+                {l.label}
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#contact"
-              className="text-[14px] font-semibold text-white no-underline px-6 py-[10px] rounded-full transition-all duration-200 hover:scale-[1.04]"
-              style={{ background: '#FF6200' }}
-            >
-              Start a Project
-            </a>
-          </li>
         </ul>
 
+        <a href="#contact"
+          className="hidden md:inline-block px-6 py-[9px] rounded-full text-white font-semibold text-[14px] transition-all duration-200 hover:scale-[1.04]"
+          style={{ background: 'var(--orange)' }}>
+          Start a Project
+        </a>
+
         {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-[5px] cursor-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
+        <button className="md:hidden flex flex-col gap-[5px]" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu"
+          style={{ cursor: 'none' }}>
           <span className={`block w-6 h-[2px] bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
           <span className={`block w-6 h-[2px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
           <span className={`block w-6 h-[2px] bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
@@ -70,26 +58,18 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div
-        className="absolute top-16 left-0 right-0 nav-glass border-t border-white/[0.06] transition-all duration-300 overflow-hidden md:hidden"
-        style={{ maxHeight: menuOpen ? 300 : 0 }}
-      >
+      <div className="absolute top-[60px] left-0 right-0 overflow-hidden transition-all duration-300 md:hidden"
+        style={{ maxHeight: menuOpen ? 280 : 0, background: 'rgba(12,12,12,0.95)', borderBottom: '1px solid var(--border)' }}>
         <div className="flex flex-col px-6 py-4 gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-[15px] font-medium text-white/60 no-underline py-2 border-b border-white/[0.06]"
-            >
-              {link.label}
+          {navLinks.map((l) => (
+            <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}
+              className="text-[15px] py-2 no-underline border-b"
+              style={{ color: 'var(--text-2)', borderColor: 'var(--border)' }}>
+              {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-2"
-            style={{ background: '#FF6200' }}
-          >
+          <a href="#contact" className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-1"
+            style={{ background: 'var(--orange)' }}>
             Start a Project
           </a>
         </div>

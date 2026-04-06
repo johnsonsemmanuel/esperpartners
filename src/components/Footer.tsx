@@ -3,33 +3,33 @@ import Image from 'next/image';
 
 const footerLinks = {
   Services: ['Web Development', 'Mobile Apps', 'Enterprise Software', 'AI & Automation', 'Cloud & DevOps'],
-  Company: ['About', 'Careers', 'Blog', 'Press', 'Contact'],
+  Company: ['About Us', 'Careers', 'Blog', 'Case Studies', 'Contact'],
   Connect: ['LinkedIn', 'GitHub', 'Dribbble', 'Twitter / X'],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] pt-16 pb-10 px-12">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="grid gap-16 mb-16" style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr' }}>
-          {/* Brand */}
+    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '60px 40px 36px' }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto' }}>
+        <div className="grid gap-14 mb-14" style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr' }}>
           <div>
             <Link href="/" className="no-underline block mb-4">
-              <Image src="/logo.png" alt="Esper Partners" width={44} height={44} className="rounded-lg" />
+              <Image src="/logo.png" alt="Esper Partners" width={40} height={40} className="rounded-lg" />
             </Link>
-            <p className="text-[14px] text-[#5A5A5A] font-light leading-[1.7]">
+            <p className="text-[14px] font-light leading-[1.7]" style={{ color: 'var(--text-3)' }}>
               Building the software that powers tomorrow's most ambitious businesses. Excellence is our only standard.
             </p>
           </div>
-
-          {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-[12px] font-bold uppercase tracking-[0.1em] text-[#A0A0A0] mb-5">{title}</h4>
-              <ul className="list-none flex flex-col gap-3">
+              <h4 className="text-[11px] font-bold uppercase tracking-[.1em] mb-5" style={{ color: 'var(--text-3)' }}>{title}</h4>
+              <ul className="list-none flex flex-col gap-[10px]">
                 {links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-[14px] text-[#5A5A5A] font-light no-underline transition-colors duration-200 hover:text-white">
+                    <a href="#" className="text-[14px] font-light no-underline transition-colors duration-200"
+                      style={{ color: 'var(--text-3)' }}
+                      onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                      onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-3)')}>
                       {l}
                     </a>
                   </li>
@@ -38,12 +38,10 @@ export default function Footer() {
             </div>
           ))}
         </div>
-
-        {/* Bottom */}
-        <div className="border-t border-white/[0.06] pt-7 flex justify-between items-center flex-wrap gap-4">
-          <div className="text-[13px] text-[#5A5A5A] font-light">© 2026 Esper Partners. All rights reserved.</div>
-          <div className="flex items-center gap-2 text-[12px] text-[#5A5A5A]">
-            Built with <span className="text-[#FF6200]">♥</span> for the world
+        <div className="flex justify-between items-center flex-wrap gap-4 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
+          <div className="text-[13px] font-light" style={{ color: 'var(--text-3)' }}>© 2026 Esper Partners. All rights reserved.</div>
+          <div className="flex items-center gap-2 text-[12px]" style={{ color: 'var(--text-3)' }}>
+            Built with <span style={{ color: 'var(--orange)' }}>♥</span> for the world
           </div>
         </div>
       </div>

@@ -1,61 +1,140 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { Lightbulb, PenLine, Settings2, Rocket, CheckCircle2 } from 'lucide-react';
 import { useReveal } from './useReveal';
 
 const steps = [
   {
-    num: '01',
-    title: 'Discover',
-    desc: 'Deep-dive workshops to understand your business, users, and the problem space before a single line of code is written.',
+    num: '01', title: 'Discover & Define',
+    desc: 'We run a deep-dive workshop to understand your business, users, and goals. By the end, you\'ll have a clear product roadmap, not just a quote.',
+    icon: Lightbulb,
+    visual: [
+      { icon: Lightbulb, label: 'Share Vision' },
+      { icon: PenLine, label: 'Fill Brief' },
+      { icon: Settings2, label: 'Set Goals' },
+      { icon: Rocket, label: 'Set Timeline' },
+    ],
   },
   {
-    num: '02',
-    title: 'Architect',
-    desc: 'System design, UX wireframes, and technical architecture built for performance, security, and long-term scale.',
+    num: '02', title: 'Design & Architect',
+    desc: 'Our designers and architects create a pixel-perfect UI and a rock-solid technical foundation — reviewed and approved before a line of code is written.',
+    icon: PenLine,
+    checks: ['Technical architecture reviewed', 'Stack & integrations confirmed', 'UX wireframes approved', 'Sprint plan in progress...'],
   },
   {
-    num: '03',
-    title: 'Engineer',
-    desc: 'Agile sprints with daily progress, rigorous code reviews, and automated testing at every commit.',
+    num: '03', title: 'Build & Test',
+    desc: 'Agile sprints with daily updates, automated test suites, and rigorous code reviews. You always know exactly where your product stands.',
+    kpis: [{ num: '12', label: 'Sprints' }, { num: '98%', label: 'Test Coverage' }, { num: '0', label: 'Bugs Shipped' }, { num: '14w', label: 'Avg. Delivery' }],
   },
   {
-    num: '04',
-    title: 'Elevate',
-    desc: 'Launch, monitor, optimize. We stay on as your long-term engineering partner — not just a vendor.',
+    num: '04', title: 'Launch & Scale',
+    desc: 'Zero-downtime deployment, full monitoring setup, and a 6-month support window. We don\'t disappear after launch — we\'re your long-term tech partner.',
+    checks: ['Deployed to production', 'Monitoring & alerts active', 'Team handover complete', '6-month support begins'],
   },
 ];
 
 export default function Process() {
-  const sectionRef = useReveal();
+  const ref = useReveal();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActive(p => (p + 1) % steps.length), 3200);
+    return () => clearInterval(t);
+  }, []);
+
+  const s = steps[active];
 
   return (
-    <section id="process" ref={sectionRef} className="py-[120px] px-6 md:px-12 bg-[#111111] relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="reveal">
-          <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#FF6200] mb-4">How We Work</div>
-        </div>
-        <div className="reveal reveal-d1">
-          <h2 className="font-syne font-extrabold text-white leading-[1.1] tracking-[-0.03em] mb-4"
-            style={{ fontSize: 'clamp(32px, 4vw, 52px)', maxWidth: 600 }}>
-            Precision at Every Stage
+    <section id="steps" ref={ref} style={{ padding: '100px 40px', background: 'var(--bg2)' }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto' }}>
+        <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>How It Works</div></div>
+        <div className="reveal d1">
+          <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-14" style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)' }}>
+            From Brief to Launch <span style={{ color: 'var(--orange)' }}>in Weeks</span>
           </h2>
-          <p className="text-[17px] text-[#A0A0A0] font-light leading-[1.7] mb-16" style={{ maxWidth: 540 }}>
-            Our Apple-inspired process ensures nothing ships until it's excellent.
-          </p>
         </div>
 
-        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <div key={step.num} className={`reveal reveal-d${Math.min(i + 1, 3)}`}>
-              <div className="font-syne font-extrabold text-white leading-none mb-[-20px] tracking-[-0.04em] select-none"
-                style={{ fontSize: 72, color: 'rgba(255,255,255,0.05)' }}>
-                {step.num}
+        <div className="reveal d2 grid gap-20" style={{ gridTemplateColumns: '1fr 1fr', alignItems: 'start' }}>
+          {/* Visual panel */}
+          <div className="sticky top-24 rounded-[20px] overflow-hidden border flex items-center justify-center p-7"
+            style={{ background: 'var(--bg3)', borderColor: 'var(--border)', aspectRatio: '4/3' }}>
+            {s.visual && (
+              <div className="grid grid-cols-2 gap-3 w-full">
+                {s.visual.map((v, i) => {
+                  const Icon = v.icon;
+                  return (
+                    <div key={i} className="flex items-center gap-3 rounded-xl border p-4 text-[13px] font-medium transition-colors duration-300"
+                      style={{ background: 'var(--bg2)', borderColor: 'var(--border)', color: 'var(--text)' }}>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ background: 'rgba(255,98,0,0.12)' }}>
+                        <Icon size={14} style={{ color: 'var(--orange)' }} strokeWidth={1.5} />
+                      </div>
+                      {v.label}
+                    </div>
+                  );
+                })}
               </div>
-              <div className="w-10 h-[3px] bg-[#FF6200] rounded-[2px] mb-4" />
-              <div className="font-syne font-bold text-white text-[20px] tracking-[-0.02em] mb-3">{step.title}</div>
-              <div className="text-[14px] text-[#A0A0A0] leading-[1.7] font-light">{step.desc}</div>
-            </div>
-          ))}
+            )}
+            {s.checks && (
+              <div className="flex flex-col gap-3 w-full">
+                {s.checks.map((c, i) => (
+                  <div key={i} className="flex items-center gap-3 rounded-[10px] border p-3 text-[13px]"
+                    style={{ background: 'var(--bg2)', borderColor: 'var(--border)', color: 'var(--text)' }}>
+                    <CheckCircle2 size={18} style={{ color: i < s.checks!.length - 1 ? '#22c55e' : 'var(--orange)', flexShrink: 0 }} strokeWidth={1.5} />
+                    {c}
+                  </div>
+                ))}
+              </div>
+            )}
+            {s.kpis && (
+              <div className="grid grid-cols-2 gap-3 w-full">
+                {s.kpis.map((k, i) => (
+                  <div key={i} className="rounded-xl border p-4 text-center"
+                    style={{ background: 'var(--bg2)', borderColor: 'var(--border)' }}>
+                    <div className="font-syne font-extrabold text-[28px] tracking-[-0.03em]" style={{ color: 'var(--orange)' }}>{k.num}</div>
+                    <div className="text-[11px] uppercase tracking-[.06em] mt-1" style={{ color: 'var(--text-3)' }}>{k.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Steps list */}
+          <div className="flex flex-col">
+            {steps.map((step, i) => (
+              <div key={i}
+                className="step-item py-8 border-b cursor-none transition-all duration-300"
+                style={{ borderColor: 'var(--border)' }}
+                onClick={() => setActive(i)}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[12px] font-bold font-syne border transition-all duration-300"
+                    style={{
+                      background: active === i ? 'var(--orange)' : 'var(--bg3)',
+                      borderColor: active === i ? 'var(--orange)' : 'var(--border)',
+                      color: active === i ? '#fff' : 'var(--text-3)',
+                    }}>
+                    {step.num}
+                  </div>
+                </div>
+                <div className="font-syne font-extrabold text-[20px] tracking-[-0.03em] transition-colors duration-300"
+                  style={{ color: active === i ? 'var(--text)' : 'var(--text-2)' }}>
+                  {step.title}
+                </div>
+                <div className="text-[14px] font-light leading-[1.7] mt-2 transition-all duration-300"
+                  style={{
+                    color: 'var(--text-2)',
+                    maxHeight: active === i ? 120 : 0,
+                    overflow: 'hidden',
+                    opacity: active === i ? 1 : 0,
+                  }}>
+                  {step.desc}
+                </div>
+                <div className="step-progress mt-4 rounded-sm"
+                  style={{ width: active === i ? '100%' : '0%', transition: active === i ? 'width 3.2s linear' : 'none' }} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
