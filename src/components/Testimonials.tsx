@@ -36,7 +36,7 @@ export default function Testimonials() {
                 <Star key={j} size={13} className="fill-[#FF6200]" style={{ color: 'var(--orange)' }} strokeWidth={0} />
               ))}
             </div>
-            <p className="text-[14px] font-light leading-[1.7] mb-5" style={{ color: 'var(--text-2)' }}>"{t.text}"</p>
+            <p className="text-[14px] font-light leading-[1.7] mb-5" style={{ color: 'var(--text-2)' }}>&ldquo;{t.text}&rdquo;</p>
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold font-syne text-white flex-shrink-0 text-[14px]"
                 style={{ background: 'var(--orange)' }}>

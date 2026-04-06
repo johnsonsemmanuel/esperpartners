@@ -13,7 +13,7 @@ export default function CTA() {
         style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(255,98,0,0.12) 0%, transparent 70%)' }} />
 
       <div className="relative z-[1]" style={{ maxWidth: 1180, margin: '0 auto' }}>
-        <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4 text-center" style={{ color: 'var(--orange)' }}>Let's Build Together</div></div>
+        <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4 text-center" style={{ color: 'var(--orange)' }}>Let&apos;s Build Together</div></div>
         <div className="reveal d1">
           <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-4 mx-auto"
             style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)', maxWidth: 640 }}>
@@ -21,7 +21,7 @@ export default function CTA() {
           </h2>
           <p className="font-light leading-[1.7] mb-11 mx-auto text-center"
             style={{ fontSize: 17, color: 'var(--text-2)', maxWidth: 500 }}>
-            Tell us about your project. We'll respond within 24 hours with a strategic proposal and zero pressure.
+            Tell us about your project. We&apos;ll respond within 24 hours with a strategic proposal and zero pressure.
           </p>
         </div>
         <div className="reveal d2 flex gap-4 justify-center items-center flex-wrap">

@@ -32,10 +32,8 @@ export default function Navbar() {
         <ul className="hidden md:flex gap-8 list-none ml-auto mr-8">
           {navLinks.map((l) => (
             <li key={l.label}>
-              <a href={l.href} className="text-[14px] no-underline transition-colors duration-200"
-                style={{ color: 'var(--text-2)' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}>
+              <a href={l.href} className="text-[14px] no-underline transition-colors duration-200 hover:text-white"
+                style={{ color: 'var(--text-2)' }}>
                 {l.label}
               </a>
             </li>

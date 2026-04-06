@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,7 +19,7 @@ export default function Footer() {
               <Image src="/logo.png" alt="Esper Partners" width={40} height={40} className="rounded-lg" />
             </Link>
             <p className="text-[14px] font-light leading-[1.7]" style={{ color: 'var(--text-3)' }}>
-              Building the software that powers tomorrow's most ambitious businesses. Excellence is our only standard.
+              Building the software that powers tomorrow&apos;s most ambitious businesses. Excellence is our only standard.
             </p>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
@@ -26,10 +28,8 @@ export default function Footer() {
               <ul className="list-none flex flex-col gap-[10px]">
                 {links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-[14px] font-light no-underline transition-colors duration-200"
-                      style={{ color: 'var(--text-3)' }}
-                      onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                      onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-3)')}>
+                    <a href="#" className="text-[14px] font-light no-underline transition-colors duration-200 hover:text-white"
+                      style={{ color: 'var(--text-3)' }}>
                       {l}
                     </a>
                   </li>

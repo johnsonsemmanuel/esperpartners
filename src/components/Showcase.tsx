@@ -45,7 +45,7 @@ export default function Showcase() {
             Software That Moves Markets
           </h2>
           <p className="text-[17px] text-[#5A5A5A] font-light leading-[1.7] mb-16" style={{ maxWidth: 540 }}>
-            A selection of the products we've built for innovators worldwide.
+            A selection of the products we&apos;ve built for innovators worldwide.
           </p>
         </div>
 
