@@ -1,13 +1,13 @@
 # Esper Partners — Software Company Website
 
-A world-class Next.js 14 marketing website for a software company. Built with Apple-inspired transitions, orange & white branding, and zero gradients.
+A world-class Next.js 14 marketing website for Esper Partners. Built with Apple-inspired transitions, orange & white branding, and zero gradients.
 
 ## Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS + custom CSS
-- **Animations**: CSS keyframes + Framer Motion (optional)
+- **Animations**: CSS keyframes + Framer Motion
 - **Fonts**: Syne (display) + DM Sans (body) via Google Fonts
 
 ## Getting Started
@@ -58,9 +58,6 @@ src/
 
 ## Customisation
 
-### Brand Name
-Search and replace `Nexora` / `nexora` across the project with your company name.
-
 ### Colors
 All orange values are `#FF6200`. Update in:
 - `tailwind.config.js` → `colors.orange.DEFAULT`
@@ -70,7 +67,7 @@ All orange values are `#FF6200`. Update in:
 Each component file contains its own data arrays at the top — edit services, testimonials, projects, etc. directly there.
 
 ### Contact Email
-In `src/components/CTA.tsx`, update `hello@nexora.io` to your email.
+In `src/components/CTA.tsx`, update `hello@esperpartners.com` to your email.
 
 ## Deployment
 
