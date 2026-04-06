@@ -25,13 +25,13 @@ export default function Hero() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 0, filter: 'blur(3px) brightness(0.6)', transform: 'scale(1.05)' }}
       >
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay — keeps text readable */}
-      <div className="absolute inset-0" style={{ zIndex: 1, background: 'linear-gradient(to bottom, rgba(12,12,12,0.72) 0%, rgba(12,12,12,0.60) 60%, rgba(12,12,12,0.88) 100%)' }} />
+      {/* Black overlay */}
+      <div className="absolute inset-0" style={{ zIndex: 1, background: 'rgba(0,0,0,0.55)' }} />
 
       {/* Grid overlay */}
       <div className="hero-grid absolute inset-0" style={{ zIndex: 2 }} />
