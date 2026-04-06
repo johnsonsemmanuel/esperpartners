@@ -5,17 +5,22 @@ import { useEffect, useRef } from 'react';
 export default function Cursor() {
   const curRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const mx = useRef(window?.innerWidth / 2 ?? 0);
-  const my = useRef(window?.innerHeight / 2 ?? 0);
-  const rx = useRef(mx.current);
-  const ry = useRef(my.current);
+  const mx = useRef(0);
+  const my = useRef(0);
+  const rx = useRef(0);
+  const ry = useRef(0);
 
   useEffect(() => {
     const cur = curRef.current;
     const ring = ringRef.current;
     if (!cur || !ring) return;
 
-    // Start at center so cursor is visible immediately
+    // Initialize position to center on mount
+    mx.current = window.innerWidth / 2;
+    my.current = window.innerHeight / 2;
+    rx.current = mx.current;
+    ry.current = my.current;
+
     cur.style.left = mx.current + 'px';
     cur.style.top = my.current + 'px';
     ring.style.left = rx.current + 'px';
