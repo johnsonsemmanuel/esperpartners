@@ -1,4 +1,4 @@
-# Nexora — Software Company Website
+# Esper Partners — Software Company Website
 
 A world-class Next.js 14 marketing website for a software company. Built with Apple-inspired transitions, orange & white branding, and zero gradients.
 
