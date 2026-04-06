@@ -5,24 +5,22 @@ import Image from 'next/image';
 
 const footerLinks = {
   Services: [
-    { label: 'Web Development', href: '/services' },
-    { label: 'Mobile Apps', href: '/services' },
-    { label: 'Enterprise Software', href: '/services' },
-    { label: 'AI & Automation', href: '/services' },
-    { label: 'Cloud & DevOps', href: '/services' },
+    { label: 'Web Development', href: '/#features' },
+    { label: 'Mobile Apps', href: '/#features' },
+    { label: 'Enterprise Software', href: '/#features' },
+    { label: 'AI & Automation', href: '/#features' },
+    { label: 'Pricing', href: '/pricing' },
   ],
   Company: [
     { label: 'About Us', href: '/about' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Case Studies', href: '/case-studies' },
     { label: 'Contact', href: '/contact' },
+    { label: 'Book a Call', href: 'https://cal.com/esperpartners/discovery' },
   ],
   Connect: [
     { label: 'LinkedIn', href: 'https://linkedin.com/company/esperpartners' },
     { label: 'GitHub', href: 'https://github.com/johnsonsemmanuel' },
-    { label: 'Twitter / X', href: 'https://twitter.com/esperpartners' },
     { label: 'WhatsApp', href: 'https://wa.me/233208713610' },
+    { label: 'hello@esperpartners.com', href: 'mailto:hello@esperpartners.com' },
   ],
 };
 
@@ -46,8 +44,15 @@ export default function Footer() {
               <ul className="list-none flex flex-col gap-[10px]">
                 {links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-[13px] font-light no-underline transition-colors duration-200 hover:text-white"
-                      style={{ color: 'var(--text-3)' }}>
+                    <a
+                      href={l.href}
+                      target={l.href.startsWith('http') || l.href.startsWith('mailto') ? '_blank' : undefined}
+                      rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="text-[13px] font-light no-underline transition-colors duration-200"
+                      style={{ color: 'var(--text-3)' }}
+                      onMouseEnter={e => ((e.target as HTMLElement).style.color = 'var(--orange)')}
+                      onMouseLeave={e => ((e.target as HTMLElement).style.color = 'var(--text-3)')}
+                    >
                       {l.label}
                     </a>
                   </li>
