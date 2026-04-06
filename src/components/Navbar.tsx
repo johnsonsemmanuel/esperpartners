@@ -7,11 +7,10 @@ import { useTheme } from './ThemeProvider';
 import { Sun, Moon } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Services', href: '/#features' },
-  { label: 'Process', href: '/#steps' },
-  { label: 'Work', href: '/#work' },
-  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Projects', href: '/case-studies' },
   { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Navbar() {

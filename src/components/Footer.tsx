@@ -13,8 +13,10 @@ const footerLinks = {
   ],
   Company: [
     { label: 'About Us', href: '/about' },
+    { label: 'Projects', href: '/case-studies' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Book a Call', href: 'https://cal.com/esperpartners/discovery' },
   ],
   Connect: [
     { label: 'LinkedIn', href: 'https://linkedin.com/company/esperpartners' },
