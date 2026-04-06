@@ -1,13 +1,53 @@
 'use client';
 
 import { Lock, Plug, Cloud, Smartphone, BarChart3, Bot } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { FadeIn, FadeInStagger, FadeInItem } from './FadeIn';
+
+const spring = { type: 'spring' as const, stiffness: 300, damping: 24 };
+
+const barItems = [
+  { icon: Lock, label: 'Security Layer', pct: 98 },
+  { icon: Plug, label: 'API Gateway', pct: 91 },
+  { icon: Cloud, label: 'Cloud Infra', pct: 87 },
+];
+
+const aiItems = [
+  { icon: Bot, label: 'AI Model v3.1', pct: 95 },
+  { icon: BarChart3, label: 'Automation Engine', pct: 88 },
+  { icon: Cloud, label: 'Predictions', pct: 78 },
+];
+
+const notifs = [
+  { icon: Smartphone, text: 'iOS App Deployed', sub: 'App Store · Live in 34 countries', time: '2m ago' },
+  { icon: BarChart3, text: 'Web App v2.4 Released', sub: 'Zero downtime deployment', time: '8m ago' },
+  { icon: Lock, text: 'Performance: 99/100', sub: 'Lighthouse score achieved', time: '12m ago' },
+  { icon: Plug, text: '1,240 New Users Today', sub: 'Onboarding flow complete', time: '1h ago' },
+];
+
+function BarRow({ icon: Icon, label, pct }: { icon: React.ElementType; label: string; pct: number }) {
+  return (
+    <div className="flex items-center gap-3 rounded-[10px] border p-3 text-[13px]"
+      style={{ background: 'var(--bg3)', borderColor: 'var(--border)' }}>
+      <div className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0"
+        style={{ background: 'rgba(255,165,0,0.15)', border: '1px solid rgba(255,165,0,0.2)' }}>
+        <Icon size={12} style={{ color: 'var(--orange)' }} strokeWidth={1.5} />
+      </div>
+      <span style={{ color: 'var(--text)' }}>{label}</span>
+      <div className="flex-1 h-1 rounded-sm overflow-hidden ml-1" style={{ background: 'var(--bg)' }}>
+        <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: 'var(--orange)' }} />
+      </div>
+    </div>
+  );
+}
 
 export default function Services() {
   return (
     <section id="features" style={{ padding: '80px 20px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
-        <FadeIn><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>What We Build</div></FadeIn>
+        <FadeIn>
+          <div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>What We Build</div>
+        </FadeIn>
         <FadeIn delay={0.1}>
           <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-4" style={{ fontSize: 'clamp(28px,3.8vw,52px)', color: 'var(--text)' }}>
             Every Software Solution.<br /><span style={{ color: 'var(--orange)' }}>One Studio.</span>
@@ -21,18 +61,14 @@ export default function Services() {
           <div className="rounded-[16px] overflow-hidden flex flex-col md:grid md:rounded-[20px]"
             style={{ gap: 2, background: 'var(--border)', gridTemplateColumns: '1fr 1fr 1fr', gridTemplateRows: 'auto auto' }}>
 
-            {/* Web & Mobile */}
-            <div className="bento-card p-6 md:p-9 relative overflow-hidden md:[grid-row:span_2]">
+            {/* Web & Mobile — tall */}
+            <motion.div className="bento-card p-6 md:p-9 relative overflow-hidden md:[grid-row:span_2]"
+              whileHover={{ scale: 1.01 }} transition={spring}>
               <div className="text-[11px] font-bold tracking-[.1em] uppercase mb-3" style={{ color: 'var(--orange)' }}>Web &amp; Mobile</div>
               <div className="font-syne font-extrabold text-[20px] leading-[1.2] tracking-[-0.03em] mb-2" style={{ color: 'var(--text)' }}>Apps That Feel Alive</div>
               <p className="text-[14px] font-light leading-[1.65] mb-5" style={{ color: 'var(--text-2)' }}>High-performance web apps and native mobile experiences with buttery-smooth UX your users will love.</p>
               <FadeInStagger className="flex flex-col gap-[8px]">
-                {[
-                  { icon: Smartphone, text: 'iOS App Deployed', sub: 'App Store · Live in 34 countries', time: '2m ago' },
-                  { icon: BarChart3, text: 'Web App v2.4 Released', sub: 'Zero downtime deployment', time: '8m ago' },
-                  { icon: Lock, text: 'Performance: 99/100', sub: 'Lighthouse score achieved', time: '12m ago' },
-                  { icon: Plug, text: '1,240 New Users Today', sub: 'Onboarding flow complete', time: '1h ago' },
-                ].map((n) => {
+                {notifs.map((n) => {
                   const Icon = n.icon;
                   return (
                     <FadeInItem key={n.text}>
@@ -51,10 +87,11 @@ export default function Services() {
                   );
                 })}
               </FadeInStagger>
-            </div>
+            </motion.div>
 
-            {/* Analytics */}
-            <div className="bento-card p-6 md:p-9 relative overflow-hidden md:[grid-column:span_2]">
+            {/* Analytics — wide */}
+            <motion.div className="bento-card p-6 md:p-9 relative overflow-hidden md:[grid-column:span_2]"
+              whileHover={{ scale: 1.01 }} transition={spring}>
               <div className="text-[11px] font-bold tracking-[.1em] uppercase mb-3" style={{ color: 'var(--orange)' }}>Data &amp; Analytics</div>
               <div className="font-syne font-extrabold text-[20px] leading-[1.2] tracking-[-0.03em] mb-2" style={{ color: 'var(--text)' }}>Revenue Intelligence</div>
               <p className="text-[14px] font-light leading-[1.65] mb-5" style={{ color: 'var(--text-2)' }}>Real-time dashboards and BI tools that turn raw data into decisions that grow your business faster.</p>
@@ -70,57 +107,30 @@ export default function Services() {
                 style={{ background: 'rgba(34,197,94,0.12)', border: '1px solid rgba(34,197,94,0.2)', color: '#22c55e' }}>
                 ↑ +34% from last year
               </div>
-            </div>
+            </motion.div>
 
             {/* Enterprise */}
-            <div className="bento-card p-6 md:p-9 relative overflow-hidden">
+            <motion.div className="bento-card p-6 md:p-9 relative overflow-hidden"
+              whileHover={{ scale: 1.01 }} transition={spring}>
               <div className="text-[11px] font-bold tracking-[.1em] uppercase mb-3" style={{ color: 'var(--orange)' }}>Enterprise</div>
               <div className="font-syne font-extrabold text-[20px] leading-[1.2] tracking-[-0.03em] mb-2" style={{ color: 'var(--text)' }}>Mission-Critical Systems</div>
               <p className="text-[14px] font-light leading-[1.65] mb-4" style={{ color: 'var(--text-2)' }}>ERP, CRM, and custom enterprise platforms built for Fortune-level scale and compliance.</p>
               <div className="flex flex-col gap-2">
-                {[{ icon: Lock, label: 'Security Layer', pct: 98 }, { icon: Plug, label: 'API Gateway', pct: 91 }, { icon: Cloud, label: 'Cloud Infra', pct: 87 }].map((s) => {
-                  const Icon = s.icon;
-                  return (
-                    <div key={s.label} className="flex items-center gap-3 rounded-[10px] border p-3 text-[13px]"
-                      style={{ background: 'var(--bg3)', borderColor: 'var(--border)' }}>
-                      <div className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'rgba(255,165,0,0.15)', border: '1px solid rgba(255,165,0,0.2)' }}>
-                        <Icon size={12} style={{ color: 'var(--orange)' }} strokeWidth={1.5} />
-                      </div>
-                      <span style={{ color: 'var(--text)' }}>{s.label}</span>
-                      <div className="flex-1 h-1 rounded-sm overflow-hidden ml-1" style={{ background: 'var(--bg)' }}>
-                        <div className="h-full rounded-sm" style={{ width: `${s.pct}%`, background: 'var(--orange)' }} />
-                      </div>
-                    </div>
-                  );
-                })}
+                {barItems.map((s) => <BarRow key={s.label} {...s} />)}
               </div>
-            </div>
+            </motion.div>
 
             {/* AI */}
-            <div className="bento-card p-6 md:p-9 relative overflow-hidden">
+            <motion.div className="bento-card p-6 md:p-9 relative overflow-hidden"
+              whileHover={{ scale: 1.01 }} transition={spring}>
               <div className="text-[11px] font-bold tracking-[.1em] uppercase mb-3" style={{ color: 'var(--orange)' }}>AI &amp; Automation</div>
               <div className="font-syne font-extrabold text-[20px] leading-[1.2] tracking-[-0.03em] mb-2" style={{ color: 'var(--text)' }}>Intelligent by Default</div>
               <p className="text-[14px] font-light leading-[1.65] mb-4" style={{ color: 'var(--text-2)' }}>LLM integrations, ML pipelines, and automation that transforms how your business operates at scale.</p>
               <div className="flex flex-col gap-2">
-                {[{ icon: Bot, label: 'AI Model v3.1', pct: 95 }, { icon: BarChart3, label: 'Automation Engine', pct: 88 }, { icon: Cloud, label: 'Predictions', pct: 78 }].map((s) => {
-                  const Icon = s.icon;
-                  return (
-                    <div key={s.label} className="flex items-center gap-3 rounded-[10px] border p-3 text-[13px]"
-                      style={{ background: 'var(--bg3)', borderColor: 'var(--border)' }}>
-                      <div className="w-[26px] h-[26px] rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'rgba(255,165,0,0.15)', border: '1px solid rgba(255,165,0,0.2)' }}>
-                        <Icon size={12} style={{ color: 'var(--orange)' }} strokeWidth={1.5} />
-                      </div>
-                      <span style={{ color: 'var(--text)' }}>{s.label}</span>
-                      <div className="flex-1 h-1 rounded-sm overflow-hidden ml-1" style={{ background: 'var(--bg)' }}>
-                        <div className="h-full rounded-sm" style={{ width: `${s.pct}%`, background: 'var(--orange)' }} />
-                      </div>
-                    </div>
-                  );
-                })}
+                {aiItems.map((s) => <BarRow key={s.label} {...s} />)}
               </div>
-            </div>
+            </motion.div>
+
           </div>
         </FadeIn>
       </div>

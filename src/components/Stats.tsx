@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FadeIn, FadeInStagger, FadeInItem } from './FadeIn';
 
 const countries = [
@@ -18,6 +20,34 @@ const benefits = [
   { num: '0', title: 'Missed Deadlines', desc: 'We set realistic timelines and we hit them. Scope changes are managed transparently, never used as an excuse.' },
 ];
 
+function AnimatedNum({ value }: { value: string }) {
+  const [display, setDisplay] = useState('0');
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+  const num = parseInt(value);
+
+  useEffect(() => {
+    if (isNaN(num)) { setDisplay(value); return; }
+    const suffix = value.replace(String(num), '');
+    const observer = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !started.current) {
+        started.current = true;
+        let cur = 0;
+        const step = Math.ceil(num / 40);
+        const t = setInterval(() => {
+          cur = Math.min(cur + step, num);
+          setDisplay(cur + suffix);
+          if (cur >= num) clearInterval(t);
+        }, 30);
+      }
+    }, { threshold: 0.5 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [num, value]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
 export default function Stats() {
   return (
     <section style={{ padding: '80px 20px', background: 'var(--bg2)' }}>
@@ -35,14 +65,17 @@ export default function Stats() {
         <FadeInStagger className="rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2" style={{ gap: 2, background: 'var(--border)' }}>
           {benefits.map((b, i) => (
             <FadeInItem key={i} className={b.wide ? 'md:col-span-2' : ''}>
-              <div style={{
-                background: b.accent ? 'var(--orange)' : i > 2 ? 'var(--bg3)' : 'var(--bg)',
-                padding: 'clamp(24px,4vw,40px) clamp(20px,3vw,36px)',
-                height: '100%',
-              }}>
+              <motion.div
+                whileHover={{ scale: 1.01 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                style={{
+                  background: b.accent ? 'var(--orange)' : i > 2 ? 'var(--bg3)' : 'var(--bg)',
+                  padding: 'clamp(24px,4vw,40px) clamp(20px,3vw,36px)',
+                  height: '100%',
+                }}>
                 <div className="font-syne font-extrabold leading-none mb-[-16px] tracking-[-0.04em] select-none"
                   style={{ fontSize: 72, color: b.accent ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.05)' }}>
-                  {b.num}
+                  <AnimatedNum value={b.num} />
                 </div>
                 <div className="font-syne font-extrabold tracking-[-0.03em] mb-2"
                   style={{ fontSize: b.wide ? 26 : 20, color: b.accent ? '#fff' : 'var(--text)' }}>
@@ -62,7 +95,7 @@ export default function Stats() {
                     ))}
                   </div>
                 )}
-              </div>
+              </motion.div>
             </FadeInItem>
           ))}
         </FadeInStagger>

@@ -1,6 +1,7 @@
 'use client';
 
 import { ShoppingCart, Building2, Smartphone, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { FadeIn, FadeInStagger, FadeInItem } from './FadeIn';
 
 const projects = [
@@ -28,11 +29,11 @@ export default function Showcase() {
             const Icon = p.icon;
             return (
               <FadeInItem key={i}>
-                <div className="relative rounded-[20px] overflow-hidden flex flex-col justify-between p-9 group"
-                  style={{ background: p.bg, minHeight: p.span ? 480 : 300, gridRow: p.span ? 'span 2' : undefined, border: '1px solid var(--border)', transition: 'transform 0.4s ease', cursor: 'none' }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(0.985)')}
-                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
-                  <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
+                <motion.div
+                  className="relative rounded-[20px] overflow-hidden flex flex-col justify-between p-9 group"
+                  style={{ background: p.bg, minHeight: p.span ? 480 : 300, gridRow: p.span ? 'span 2' : undefined, border: '1px solid var(--border)' }}
+                  whileHover={{ scale: 0.985 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 24 }}>                  <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] pointer-events-none">
                     <Icon size={200} strokeWidth={0.5} className="text-white" />
                   </div>
                   <div className="relative z-[1] flex justify-end">
@@ -49,7 +50,7 @@ export default function Showcase() {
                     </div>
                     <div className="text-[14px] font-light" style={{ color: 'rgba(255,255,255,0.6)' }}>{p.sub}</div>
                   </div>
-                </div>
+                </motion.div>
               </FadeInItem>
             );
           })}
