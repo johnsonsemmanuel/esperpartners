@@ -54,8 +54,10 @@ export default function Navbar() {
           {navLinks.map((l) => (
             <li key={l.label}>
               <a href={l.href}
-                className="text-[13px] font-medium no-underline transition-colors duration-200 hover:text-white"
-                style={{ color: 'var(--text-2)' }}>
+                className="text-[13px] font-medium no-underline transition-colors duration-200"
+                style={{ color: 'var(--text-2)' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}>
                 {l.label}
               </a>
             </li>
@@ -83,9 +85,9 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button className="md:hidden flex flex-col gap-[5px] ml-auto" onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu" style={{ cursor: 'none' }}>
-          <span className={`block w-5 h-[2px] bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-          <span className={`block w-5 h-[2px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-5 h-[2px] bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+          <span className={`block w-5 h-[2px] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} style={{ background: 'var(--text)' }} />
+          <span className={`block w-5 h-[2px] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} style={{ background: 'var(--text)' }} />
+          <span className={`block w-5 h-[2px] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} style={{ background: 'var(--text)' }} />
         </button>
       </nav>
 
@@ -96,26 +98,27 @@ export default function Navbar() {
           top: 76,
           left: 24,
           right: 24,
-          maxHeight: menuOpen ? 280 : 0,
-          background: 'rgba(12,12,12,0.95)',
-          border: menuOpen ? '1px solid var(--border)' : '1px solid transparent',
-          backdropFilter: 'blur(20px)',
+          maxHeight: menuOpen ? 320 : 0,
+          background: 'var(--nav-bg-scrolled)',
+          border: menuOpen ? '1px solid var(--border-hover)' : '1px solid transparent',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
         }}
       >
-        <div className="flex flex-col px-5 py-4 gap-3">
+        <div className="flex flex-col px-5 py-4 gap-1">
           {navLinks.map((l) => (
             <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}
-              className="text-[15px] py-2 no-underline border-b"
-              style={{ color: 'var(--text-2)', borderColor: 'var(--border)' }}>
+              className="text-[15px] py-3 no-underline border-b font-medium"
+              style={{ color: 'var(--text)', borderColor: 'var(--border)' }}>
               {l.label}
             </a>
           ))}
-          <a href="/contact" className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-1"
+          <a href="/contact" className="text-[14px] font-semibold text-white text-center py-3 rounded-full mt-3"
             style={{ background: 'var(--orange)' }}>
             Start a Project
           </a>
           <button onClick={toggle}
-            className="flex items-center justify-center gap-2 py-2 text-[13px] font-medium"
+            className="flex items-center justify-center gap-2 py-2 text-[13px] font-medium mt-1"
             style={{ color: 'var(--text-3)', cursor: 'none' }}>
             {theme === 'dark' ? <Sun size={13} strokeWidth={1.5} /> : <Moon size={13} strokeWidth={1.5} />}
             {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
