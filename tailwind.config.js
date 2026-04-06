@@ -27,7 +27,7 @@ module.exports = {
       },
       fontFamily: {
         syne: ['Syne', 'sans-serif'],
-        dm: ['DM Sans', 'sans-serif'],
+        dm: ['Inter', 'sans-serif'],
       },
       animation: {
         'float-1': 'floatDrift 7s ease-in-out infinite',

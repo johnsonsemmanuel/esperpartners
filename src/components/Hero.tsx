@@ -62,7 +62,7 @@ export default function Hero() {
 
         {/* Eyebrow */}
         <motion.div {...fadeUp(0.2)} className="text-[12px] font-semibold uppercase tracking-[.12em] mb-5" style={{ color: 'var(--orange)' }}>
-          Ghana · Nigeria · UK · USA · Togo
+          Idea → Architecture → Launch
         </motion.div>
 
         {/* Headline */}
@@ -93,7 +93,7 @@ export default function Hero() {
 
         {/* Trust line */}
         <motion.p {...fadeUp(0.45)} className="text-[13px] font-medium mb-10" style={{ color: 'rgba(255,255,255,0.4)' }}>
-          Trusted by founders in Accra, Lagos, London &amp; beyond
+          Projects delivered in Ghana, Nigeria, the UK, the USA &amp; Togo
         </motion.p>
 
         {/* CTAs — discovery call is primary */}
