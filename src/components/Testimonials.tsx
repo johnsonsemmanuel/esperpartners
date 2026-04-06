@@ -18,7 +18,7 @@ export default function Testimonials() {
 
   return (
     <section ref={ref} style={{ background: 'var(--bg)', overflow: 'hidden', paddingBottom: 0 }}>
-      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '100px 40px 0' }}>
+      <div style={{ maxWidth: 1180, margin: '0 auto', padding: '80px 20px 0' }}>
         <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Client Stories</div></div>
         <div className="reveal d1">
           <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-11" style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)' }}>

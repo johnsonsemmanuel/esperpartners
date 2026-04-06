@@ -11,10 +11,11 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '60px 40px 36px' }}>
+    <footer style={{ background: 'var(--bg)', borderTop: '1px solid var(--border)', padding: '60px 20px 36px' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
-        <div className="grid gap-14 mb-14" style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr' }}>
-          <div>
+        {/* Grid: stacks on mobile, 4-col on desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+          <div className="col-span-2 md:col-span-1">
             <Link href="/" className="no-underline block mb-4">
               <Image src="/logo.png" alt="Esper Partners" width={40} height={40} className="rounded-lg" />
             </Link>
@@ -24,11 +25,11 @@ export default function Footer() {
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-[11px] font-bold uppercase tracking-[.1em] mb-5" style={{ color: 'var(--text-3)' }}>{title}</h4>
+              <h4 className="text-[11px] font-bold uppercase tracking-[.1em] mb-4" style={{ color: 'var(--text-3)' }}>{title}</h4>
               <ul className="list-none flex flex-col gap-[10px]">
                 {links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-[14px] font-light no-underline transition-colors duration-200 hover:text-white"
+                    <a href="#" className="text-[13px] font-light no-underline transition-colors duration-200 hover:text-white"
                       style={{ color: 'var(--text-3)' }}>
                       {l}
                     </a>
@@ -38,7 +39,7 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex justify-between items-center flex-wrap gap-4 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
           <div className="text-[13px] font-light" style={{ color: 'var(--text-3)' }}>© 2026 Esper Partners. All rights reserved.</div>
           <div className="flex items-center gap-2 text-[12px]" style={{ color: 'var(--text-3)' }}>
             Built with <span style={{ color: 'var(--orange)' }}>♥</span> for the world

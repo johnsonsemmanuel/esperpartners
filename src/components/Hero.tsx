@@ -16,7 +16,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center relative overflow-hidden"
-      style={{ padding: '120px 40px 80px' }}>
+      style={{ padding: 'clamp(100px, 15vw, 140px) clamp(20px, 5vw, 60px) 80px' }}>
 
       {/* Background video */}
       <video

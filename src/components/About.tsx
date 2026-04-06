@@ -14,13 +14,13 @@ export default function About() {
   const sectionRef = useReveal();
 
   return (
-    <section id="about" ref={sectionRef} style={{ padding: '100px 40px', background: 'var(--bg2)' }}>
+    <section id="about" ref={sectionRef} style={{ padding: '80px 20px', background: 'var(--bg2)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <div className="reveal">
           <div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Who We Are</div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="reveal d1">
             <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-6"
               style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)' }}>

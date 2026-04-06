@@ -8,7 +8,7 @@ export default function CTA() {
 
   return (
     <section id="contact" ref={ref} className="text-center relative overflow-hidden"
-      style={{ padding: '100px 40px', background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
+      style={{ padding: '80px 20px', background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(255,98,0,0.12) 0%, transparent 70%)' }} />
 

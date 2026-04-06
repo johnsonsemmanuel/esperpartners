@@ -46,7 +46,7 @@ export default function Stats() {
   const ref = useReveal();
 
   return (
-    <section ref={ref} style={{ padding: '100px 40px', background: 'var(--bg2)' }}>
+    <section ref={ref} style={{ padding: '80px 20px', background: 'var(--bg2)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <div className="reveal">
           <div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Why Esper Partners</div>
@@ -66,7 +66,7 @@ export default function Stats() {
               className={b.wide ? 'md:col-span-2' : ''}
               style={{
                 background: b.accent ? 'var(--orange)' : i > 2 ? 'var(--bg3)' : 'var(--bg)',
-                padding: '40px 36px',
+                padding: 'clamp(24px, 4vw, 40px) clamp(20px, 3vw, 36px)',
                 position: 'relative',
                 overflow: 'hidden',
               }}>

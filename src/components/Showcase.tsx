@@ -34,7 +34,7 @@ export default function Showcase() {
   const sectionRef = useReveal();
 
   return (
-    <section id="work" ref={sectionRef} style={{ padding: '100px 40px', background: 'var(--bg)' }}>
+    <section id="work" ref={sectionRef} style={{ padding: '80px 20px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <div className="reveal">
           <div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>Selected Work</div>

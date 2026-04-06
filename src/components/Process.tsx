@@ -7,8 +7,7 @@ import { useReveal } from './useReveal';
 const steps = [
   {
     num: '01', title: 'Discover & Define',
-    desc: 'We run a deep-dive workshop to understand your business, users, and goals. By the end, you\'ll have a clear product roadmap, not just a quote.',
-    icon: Lightbulb,
+    desc: 'We run a deep-dive workshop to understand your business, users, and goals. By the end you will have a clear product roadmap, not just a quote.',
     visual: [
       { icon: Lightbulb, label: 'Share Vision' },
       { icon: PenLine, label: 'Fill Brief' },
@@ -19,8 +18,7 @@ const steps = [
   {
     num: '02', title: 'Design & Architect',
     desc: 'Our designers and architects create a pixel-perfect UI and a rock-solid technical foundation — reviewed and approved before a line of code is written.',
-    icon: PenLine,
-    checks: ['Technical architecture reviewed', 'Stack & integrations confirmed', 'UX wireframes approved', 'Sprint plan in progress...'],
+    checks: ['Technical architecture reviewed', 'Stack & integrations confirmed', 'UX wireframes approved', 'Sprint plan in progress'],
   },
   {
     num: '03', title: 'Build & Test',
@@ -29,7 +27,7 @@ const steps = [
   },
   {
     num: '04', title: 'Launch & Scale',
-    desc: 'Zero-downtime deployment, full monitoring setup, and a 6-month support window. We don\'t disappear after launch — we\'re your long-term tech partner.',
+    desc: 'Zero-downtime deployment, full monitoring setup, and a 6-month support window. We stay on as your long-term tech partner.',
     checks: ['Deployed to production', 'Monitoring & alerts active', 'Team handover complete', '6-month support begins'],
   },
 ];
@@ -46,28 +44,28 @@ export default function Process() {
   const s = steps[active];
 
   return (
-    <section id="steps" ref={ref} style={{ padding: '100px 40px', background: 'var(--bg2)' }}>
+    <section id="steps" ref={ref} style={{ padding: '80px 20px', background: 'var(--bg2)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <div className="reveal"><div className="text-[11px] font-bold tracking-[.14em] uppercase mb-4" style={{ color: 'var(--orange)' }}>How It Works</div></div>
         <div className="reveal d1">
-          <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-14" style={{ fontSize: 'clamp(30px,3.8vw,52px)', color: 'var(--text)' }}>
+          <h2 className="font-syne font-extrabold leading-[1.08] tracking-[-0.035em] mb-10" style={{ fontSize: 'clamp(28px,3.8vw,52px)', color: 'var(--text)' }}>
             From Brief to Launch <span style={{ color: 'var(--orange)' }}>in Weeks</span>
           </h2>
         </div>
 
-        <div className="reveal d2 grid gap-20" style={{ gridTemplateColumns: '1fr 1fr', alignItems: 'start' }}>
-          {/* Visual panel */}
-          <div className="sticky top-24 rounded-[20px] overflow-hidden border flex items-center justify-center p-7"
+        <div className="reveal d2 flex flex-col lg:grid lg:gap-16" style={{ gridTemplateColumns: '1fr 1fr', alignItems: 'start' }}>
+
+          {/* Visual panel — hidden on mobile, sticky on desktop */}
+          <div className="hidden lg:flex sticky top-24 rounded-[20px] overflow-hidden border items-center justify-center p-7"
             style={{ background: 'var(--bg3)', borderColor: 'var(--border)', aspectRatio: '4/3' }}>
             {s.visual && (
               <div className="grid grid-cols-2 gap-3 w-full">
                 {s.visual.map((v, i) => {
                   const Icon = v.icon;
                   return (
-                    <div key={i} className="flex items-center gap-3 rounded-xl border p-4 text-[13px] font-medium transition-colors duration-300"
+                    <div key={i} className="flex items-center gap-3 rounded-xl border p-4 text-[13px] font-medium"
                       style={{ background: 'var(--bg2)', borderColor: 'var(--border)', color: 'var(--text)' }}>
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'rgba(255,98,0,0.12)' }}>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(255,165,0,0.12)' }}>
                         <Icon size={14} style={{ color: 'var(--orange)' }} strokeWidth={1.5} />
                       </div>
                       {v.label}
@@ -81,7 +79,8 @@ export default function Process() {
                 {s.checks.map((c, i) => (
                   <div key={i} className="flex items-center gap-3 rounded-[10px] border p-3 text-[13px]"
                     style={{ background: 'var(--bg2)', borderColor: 'var(--border)', color: 'var(--text)' }}>
-                    <CheckCircle2 size={18} style={{ color: i < s.checks!.length - 1 ? '#22c55e' : 'var(--orange)', flexShrink: 0 }} strokeWidth={1.5} />
+                    <CheckCircle2 size={18} strokeWidth={1.5}
+                      style={{ color: i < s.checks!.length - 1 ? '#22c55e' : 'var(--orange)', flexShrink: 0 }} />
                     {c}
                   </div>
                 ))}
@@ -90,8 +89,7 @@ export default function Process() {
             {s.kpis && (
               <div className="grid grid-cols-2 gap-3 w-full">
                 {s.kpis.map((k, i) => (
-                  <div key={i} className="rounded-xl border p-4 text-center"
-                    style={{ background: 'var(--bg2)', borderColor: 'var(--border)' }}>
+                  <div key={i} className="rounded-xl border p-4 text-center" style={{ background: 'var(--bg2)', borderColor: 'var(--border)' }}>
                     <div className="font-syne font-extrabold text-[28px] tracking-[-0.03em]" style={{ color: 'var(--orange)' }}>{k.num}</div>
                     <div className="text-[11px] uppercase tracking-[.06em] mt-1" style={{ color: 'var(--text-3)' }}>{k.label}</div>
                   </div>
@@ -103,12 +101,9 @@ export default function Process() {
           {/* Steps list */}
           <div className="flex flex-col">
             {steps.map((step, i) => (
-              <div key={i}
-                className="step-item py-8 border-b cursor-none transition-all duration-300"
-                style={{ borderColor: 'var(--border)' }}
-                onClick={() => setActive(i)}>
+              <div key={i} className="py-6 border-b" style={{ borderColor: 'var(--border)', cursor: 'none' }} onClick={() => setActive(i)}>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[12px] font-bold font-syne border transition-all duration-300"
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center text-[12px] font-bold font-syne border transition-all duration-300 flex-shrink-0"
                     style={{
                       background: active === i ? 'var(--orange)' : 'var(--bg3)',
                       borderColor: active === i ? 'var(--orange)' : 'var(--border)',
@@ -116,21 +111,16 @@ export default function Process() {
                     }}>
                     {step.num}
                   </div>
+                  <div className="font-syne font-extrabold text-[18px] tracking-[-0.03em] transition-colors duration-300"
+                    style={{ color: active === i ? 'var(--text)' : 'var(--text-2)' }}>
+                    {step.title}
+                  </div>
                 </div>
-                <div className="font-syne font-extrabold text-[20px] tracking-[-0.03em] transition-colors duration-300"
-                  style={{ color: active === i ? 'var(--text)' : 'var(--text-2)' }}>
-                  {step.title}
-                </div>
-                <div className="text-[14px] font-light leading-[1.7] mt-2 transition-all duration-300"
-                  style={{
-                    color: 'var(--text-2)',
-                    maxHeight: active === i ? 120 : 0,
-                    overflow: 'hidden',
-                    opacity: active === i ? 1 : 0,
-                  }}>
+                <div className="text-[14px] font-light leading-[1.7] transition-all duration-300 pl-10"
+                  style={{ color: 'var(--text-2)', maxHeight: active === i ? 120 : 0, overflow: 'hidden', opacity: active === i ? 1 : 0 }}>
                   {step.desc}
                 </div>
-                <div className="step-progress mt-4 rounded-sm"
+                <div className="step-progress ml-10 mt-3 rounded-sm"
                   style={{ width: active === i ? '100%' : '0%', transition: active === i ? 'width 3.2s linear' : 'none' }} />
               </div>
             ))}

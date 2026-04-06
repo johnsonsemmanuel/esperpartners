@@ -134,7 +134,7 @@ export default function Pricing() {
   const [currency, setCurrency] = useState<Currency>('USD');
 
   return (
-    <section id="pricing" ref={ref} style={{ padding: '100px 40px', background: 'var(--bg)' }}>
+    <section id="pricing" ref={ref} style={{ padding: '80px 20px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
 
         <div className="reveal">
