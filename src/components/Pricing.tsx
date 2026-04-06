@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useReveal } from './useReveal';
+
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 type Currency = 'USD' | 'GHS' | 'NGN';
@@ -130,11 +130,11 @@ const retainerTiers = [
 ];
 
 export default function Pricing() {
-  const ref = useReveal();
+  
   const [currency, setCurrency] = useState<Currency>('USD');
 
   return (
-    <section id="pricing" ref={ref} style={{ padding: '80px 20px', background: 'var(--bg)' }}>
+    <section id="pricing"  style={{ padding: '80px 20px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
 
         <div className="reveal">
