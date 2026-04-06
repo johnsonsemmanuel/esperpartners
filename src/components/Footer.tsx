@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const footerLinks = {
   Services: ['Web Development', 'Mobile Apps', 'Enterprise Software', 'AI & Automation', 'Cloud & DevOps'],
@@ -13,8 +14,8 @@ export default function Footer() {
         <div className="grid gap-16 mb-16" style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr' }}>
           {/* Brand */}
           <div>
-            <Link href="/" className="font-syne font-extrabold text-[22px] tracking-[-0.5px] text-white no-underline block mb-4">
-              Esper <span className="text-[#FF6200]">Partners</span>
+            <Link href="/" className="no-underline block mb-4">
+              <Image src="/logo.png" alt="Esper Partners" width={44} height={44} className="rounded-lg" />
             </Link>
             <p className="text-[14px] text-[#5A5A5A] font-light leading-[1.7]">
               Building the software that powers tomorrow's most ambitious businesses. Excellence is our only standard.

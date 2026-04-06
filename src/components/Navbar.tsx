@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -29,8 +30,8 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between w-full max-w-[1400px] mx-auto">
         {/* Logo */}
-        <Link href="/" className="font-syne font-extrabold text-[22px] tracking-[-0.5px] text-black no-underline">
-          Esper <span className="text-[#FF6200]">Partners</span>
+        <Link href="/" className="no-underline flex items-center">
+          <Image src="/logo.png" alt="Esper Partners" width={40} height={40} className="rounded-lg" priority />
         </Link>
 
         {/* Desktop Links */}
