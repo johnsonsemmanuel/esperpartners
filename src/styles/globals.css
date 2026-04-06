@@ -72,13 +72,14 @@ body {
 #cur-r {
   position: fixed;
   width: 32px; height: 32px;
-  border: 1.5px solid rgba(255,98,0,0.5);
+  border: 1.5px solid var(--orange);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
   transform: translate(-50%, -50%);
   transition: width .12s, height .12s;
   will-change: left, top;
+  opacity: 0.45;
 }
 #cur.h  { width: 18px; height: 18px; }
 #cur-r.h { width: 48px; height: 48px; }
@@ -98,14 +99,14 @@ body {
 /* ── Hero ── */
 .hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255,98,0,0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(255,165,0,0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
 }
